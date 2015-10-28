@@ -1,6 +1,6 @@
 DaoType=S2JDBC
 DefaultResourcePath=/mfc/src/main/resources
-DefaultRootPackage=jp.mfc
+DefaultRootPackage=mfc
 DefaultSrcPath=/mfc/src/main/java
 ServletPath=mfc
 ViewType=SA-Struts
