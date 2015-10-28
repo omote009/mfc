@@ -1,0 +1,99 @@
+@CHARSET "UTF-8";
+
+body {
+    font-family:  'メイリオ', Meiryo,'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro',
+        'ＭＳ Ｐゴシック', sans-serif;
+}
+
+/*
+    PC用レイアウト
+ */
+#body_box {
+   width:980px;
+   margin:0 auto;
+   background:white;
+   border-top:5px solid darkgreen;
+   border-bottom:5px solid darkgreen;
+}
+
+#top_ad_box {
+   position:relative;
+   width:95%;
+   height:135px;
+   clear:both;
+   background:white;
+
+}
+
+#menu_box {
+   width:95%;
+   clear:both;
+   background:darkgreen;
+
+}
+
+#main_contents_box {
+    width:95%;
+       clear:both;
+       margin-top:10px;
+    margin-bottom:10px;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+#bottom_ad_box {
+   clear:both;
+   width:95%
+}
+
+
+#jump_to_pagetop_box {
+   padding:10px;
+   text-align:right;
+}
+
+#jump_to_pagetop_box a {
+   padding:0 0 0 12px;
+   background:url("../images/bg_pagetop.gif") 0 60% no-repeat;
+}
+
+
+/*
+    Mobile(スマートフォン）用レイアウト
+*/
+
+
+#body_mobile_box {
+   width:100%;
+   margin:0 auto;
+   background:white;
+   border-top:5px solid darkgreen;
+   border-bottom:5px solid darkgreen;
+}
+
+#body_mobile_box {
+   position:relative;
+   width:95%;
+   height:75px;
+   background:white;
+}
+
+#menu_mobile_box {
+   width:95%;
+   background:darkgreen;
+}
+
+#main_contents_mobile_box {
+       clear:both;
+       width:100%;
+       margin-top:10px;
+    margin-bottom:10px;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+#bottom_ad_mobile_box {
+   clear:both;
+   width:95%;
+}
+
