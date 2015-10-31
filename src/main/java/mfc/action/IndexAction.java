@@ -17,10 +17,10 @@ package mfc.action;
 
 import org.seasar.struts.annotation.Execute;
 
-public class IndexAction {
-	
+public class IndexAction extends AbstractSuperAction{
+
     @Execute(validator = false)
-	public String index() {
+    public String index() {
         return "index.jsp";
-	}
+    }
 }

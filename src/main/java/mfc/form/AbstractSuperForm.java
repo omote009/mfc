@@ -1,6 +1,6 @@
 package mfc.form;
 
-public class MfcSuperForm {
+public class AbstractSuperForm {
 
     // タグ title
     public String commonTitleMessage;
