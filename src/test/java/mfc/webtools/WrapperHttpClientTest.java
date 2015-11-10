@@ -22,8 +22,7 @@ public class WrapperHttpClientTest {
         try {
             System.out.println(URLEncoder.encode("\"ポタリ\" site:www.youtube.com", "UTF-8"));
         } catch (UnsupportedEncodingException e) {
-            // TODO 自動生成された catch ブロック
-            e.printStackTrace();
+             e.printStackTrace();
         }
         List<GoogleSearchResult> list =httpClient.responseFromGoogle("\"ポタリ\" site:www.youtube.com");
         for(GoogleSearchResult s: list){
