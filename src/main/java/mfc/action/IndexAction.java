@@ -17,7 +17,7 @@ package mfc.action;
 
 import org.seasar.struts.annotation.Execute;
 
-public class IndexAction extends AbstractSuperAction{
+public class IndexAction extends AbstractAction{
 
     @Execute(validator = false)
     public String index() {

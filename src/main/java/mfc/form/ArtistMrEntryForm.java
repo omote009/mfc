@@ -1,5 +1,5 @@
 package mfc.form;
 
-public class ArtistMrEntryForm extends AbstractSuperForm {
+public class ArtistMrEntryForm extends AbstractForm {
 
 }

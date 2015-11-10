@@ -1,5 +1,5 @@
 package mfc.action;
 
-public class ArtistMrEntryAction extends AbstractSuperAction {
+public class ArtistMrEntryAction extends AbstractAction {
 
 }
