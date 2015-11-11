@@ -49,7 +49,9 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
 
             // youtubeから動画を検索する。
             StringBuilder sb = new StringBuilder();
+            sb.append("\"");
             sb.append(artist.getArtistName1());
+            sb.append("\"");
             sb.append(" site:www.youtube.com");
             GoogleHttpClient httpClient = new GoogleHttpClient();
             System.out.println(sb.toString());

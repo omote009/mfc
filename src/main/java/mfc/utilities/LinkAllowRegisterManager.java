@@ -4,7 +4,7 @@ import org.seasar.framework.util.StringUtil;
 
 public class LinkAllowRegisterManager {
 
-    private LinkAllowRegisterManager(){
+    private LinkAllowRegisterManager() {
 
     }
 
@@ -12,9 +12,9 @@ public class LinkAllowRegisterManager {
      * @param url
      * @return yuoTubeのURLならTRUE
      */
-    public static boolean isYouTube(final String url){
+    public static boolean isYouTube(final String url) {
         boolean ret = false;
-        if(StringUtil.isBlank(url)){
+        if (StringUtil.isBlank(url)) {
             return false;
         }
 
@@ -27,10 +27,10 @@ public class LinkAllowRegisterManager {
      * @param url
      * @return GyaoのURLならTRUE
      */
-    public static boolean isGyao(final String url){
+    public static boolean isGyao(final String url) {
         boolean ret = false;
 
-        if(StringUtil.isBlank(url)){
+        if (StringUtil.isBlank(url)) {
             return false;
         }
         String pattern = ".*(gyao).*";
@@ -42,9 +42,9 @@ public class LinkAllowRegisterManager {
      * @param url
      * @return　DMotionのURLならTRUE
      */
-    public static boolean isDmotion(final String url){
+    public static boolean isDmotion(final String url) {
         boolean ret = false;
-        if(StringUtil.isBlank(url)){
+        if (StringUtil.isBlank(url)) {
             return false;
         }
 
@@ -57,9 +57,9 @@ public class LinkAllowRegisterManager {
      * @param url
      * @return MuzixのURLならTRUE
      */
-    public static boolean isMuzix(final String url){
+    public static boolean isMuzix(final String url) {
         boolean ret = false;
-        if(StringUtil.isBlank(url)){
+        if (StringUtil.isBlank(url)) {
             return false;
         }
         String pattern = ".*(mu-zix).*";
@@ -71,60 +71,59 @@ public class LinkAllowRegisterManager {
      * @param url
      * @return　ニコニコ動画のURLならTRUE
      */
-    public static boolean isNoco(final String url){
-         boolean ret = false;
-         if(StringUtil.isBlank(url)){
-             return false;
-         }
-         String pattern = ".*(nicovideo).*";
-         ret = WrapperRegexManager.isMatched(url, pattern);
-         return ret;
-     }
+    public static boolean isNoco(final String url) {
+        boolean ret = false;
+        if (StringUtil.isBlank(url)) {
+            return false;
+        }
+        String pattern = ".*(nicovideo).*";
+        ret = WrapperRegexManager.isMatched(url, pattern);
+        return ret;
+    }
 
     /**
      * @param url
      * @return SoundCloudのURLならTRUE
      */
-    public static boolean isSound(final String url){
-         boolean ret = false;
-         if(StringUtil.isBlank(url)){
-             return false;
-         }
+    public static boolean isSound(final String url) {
+        boolean ret = false;
+        if (StringUtil.isBlank(url)) {
+            return false;
+        }
 
-         String pattern = ".*(soundcloud).*";
-         ret = WrapperRegexManager.isMatched(url, pattern);
-         return ret;
-     }
+        String pattern = ".*(soundcloud).*";
+        ret = WrapperRegexManager.isMatched(url, pattern);
+        return ret;
+    }
 
     /**
      * @param url
      * @return AudioReafのURLならTRUE
      */
-    public static boolean isAudio(final String url){
-         boolean ret = false;
-         if(StringUtil.isBlank(url)){
-             return false;
-         }
+    public static boolean isAudio(final String url) {
+        boolean ret = false;
+        if (StringUtil.isBlank(url)) {
+            return false;
+        }
 
-         String pattern = ".*(audioleaf).*";
-         ret = WrapperRegexManager.isMatched(url, pattern);
-         return ret;
-     }
+        String pattern = ".*(audioleaf).*";
+        ret = WrapperRegexManager.isMatched(url, pattern);
+        return ret;
+    }
 
     /**
      * @param url
      * @return UストリームのURLならTRUE
      */
-    public static boolean isUstream(final String url){
-         boolean ret = false;
-         if(StringUtil.isBlank(url)){
-             return false;
-         }
+    public static boolean isUstream(final String url) {
+        boolean ret = false;
+        if (StringUtil.isBlank(url)) {
+            return false;
+        }
 
-         String pattern = ".*(ustream).*";
-         ret = WrapperRegexManager.isMatched(url, pattern);
-         return ret;
-     }
-
+        String pattern = ".*(ustream).*";
+        ret = WrapperRegexManager.isMatched(url, pattern);
+        return ret;
+    }
 
 }

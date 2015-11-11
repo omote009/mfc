@@ -14,7 +14,6 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
-
 /**
  * appatche Http Client wrapper
  *
@@ -23,11 +22,11 @@ import org.apache.log4j.Logger;
  */
 public class WrapperHttpClient {
 
-    public WrapperHttpClient(){
+    public WrapperHttpClient() {
 
     }
 
-    Logger log = Logger.getLogger( WrapperHttpClient.class);
+    Logger log = Logger.getLogger(WrapperHttpClient.class);
     /*
      * 接続が確立するまでの待ち時間（ミリ秒）。
      */
@@ -38,35 +37,33 @@ public class WrapperHttpClient {
      */
     private final int RESPONSE_TIMEOUT_VALUE_IN_MILLISECOND = 90000; // 90秒
 
-
-
     /**
      * 汎用：HttpClientオブジェクト初期化
      *
      * @return
      */
-    private HttpClient instanceBuild(){
+    private HttpClient instanceBuild() {
         // configurations
-          int socketTimeout =  RESPONSE_TIMEOUT_VALUE_IN_MILLISECOND;
-          int connectionTimeout = CONNECTION_TIMEOUT_VALUE_IN_MILLISECOND;
+        int socketTimeout = RESPONSE_TIMEOUT_VALUE_IN_MILLISECOND;
+        int connectionTimeout = CONNECTION_TIMEOUT_VALUE_IN_MILLISECOND;
 
-          String userAgent = "httpClient. to internal operation";
-          // request configuration
-          RequestConfig requestConfig = RequestConfig.custom()
-              .setConnectTimeout(connectionTimeout)
-              .setSocketTimeout(socketTimeout)
-              .build();
+        String userAgent = "httpClient. to internal operation";
+        // request configuration
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectTimeout(connectionTimeout)
+                .setSocketTimeout(socketTimeout)
+                .build();
 
-          // headers
-          List<Header> headers = new ArrayList<Header>();
-          headers.add(new BasicHeader("Accept-Charset","utf-8"));
-          headers.add(new BasicHeader("Accept-Language","ja, en;q=0.8"));
-          headers.add(new BasicHeader("User-Agent",userAgent));
+        // headers
+        List<Header> headers = new ArrayList<Header>();
+        headers.add(new BasicHeader("Accept-Charset", "utf-8"));
+        headers.add(new BasicHeader("Accept-Language", "ja, en;q=0.8"));
+        headers.add(new BasicHeader("User-Agent", userAgent));
 
-          // create client
-          return HttpClientBuilder.create()
-              .setDefaultRequestConfig(requestConfig)
-              .setDefaultHeaders(headers).build();
+        // create client
+        return HttpClientBuilder.create()
+                .setDefaultRequestConfig(requestConfig)
+                .setDefaultHeaders(headers).build();
 
     }
 
@@ -76,18 +73,18 @@ public class WrapperHttpClient {
      * @param url
      * @return
      */
-    public String responsePost(final String url){
-        int responseStatus =0;
-         try {
-                 HttpClient httpClient = instanceBuild();
-                 HttpPost method = new HttpPost(url);
-                 HttpResponse response;
-                 response = httpClient.execute(method);
-                 responseStatus = response.getStatusLine().getStatusCode();
-                 return  EntityUtils.toString(response.getEntity(), "UTF-8");
+    public String responsePost(final String url) {
+        int responseStatus = 0;
+        try {
+            HttpClient httpClient = instanceBuild();
+            HttpPost method = new HttpPost(url);
+            HttpResponse response;
+            response = httpClient.execute(method);
+            responseStatus = response.getStatusLine().getStatusCode();
+            return EntityUtils.toString(response.getEntity(), "UTF-8");
 
         } catch (Exception e) {
-            log.error( Integer.valueOf(responseStatus).toString(), e);
+            log.error(Integer.valueOf(responseStatus).toString(), e);
             return "";
 
         }
@@ -100,20 +97,18 @@ public class WrapperHttpClient {
      * @param url
      * @return
      */
-    public String responseGet(final String url){
+    public String responseGet(final String url) {
         int responseStatus = 0;
         try {
-                HttpClient httpClient = instanceBuild();
-                HttpGet  method  = new HttpGet(url);
-                HttpResponse response = httpClient.execute(method);
-                responseStatus = response.getStatusLine().getStatusCode();
-                return EntityUtils.toString(response.getEntity(), "UTF-8");
-            } catch (Exception e) {
-                log.error( Integer.valueOf(responseStatus).toString(), e);
-                return "";
-            }
-     }
-
-
+            HttpClient httpClient = instanceBuild();
+            HttpGet method = new HttpGet(url);
+            HttpResponse response = httpClient.execute(method);
+            responseStatus = response.getStatusLine().getStatusCode();
+            return EntityUtils.toString(response.getEntity(), "UTF-8");
+        } catch (Exception e) {
+            log.error(Integer.valueOf(responseStatus).toString(), e);
+            return "";
+        }
+    }
 
 }

@@ -1,6 +1,7 @@
 package mfc.service;
 
 import org.seasar.extension.jdbc.service.S2AbstractService;
+
 /*
 import mfc.consts.Defaults;
 import mfc.dto.LoginedUserDto;
@@ -16,7 +17,6 @@ import org.seasar.extension.jdbc.SqlLog;
  *
  */
 public class AbstractService<T> extends S2AbstractService<T> {
-
 
     protected AbstractService() {
         super();
@@ -42,47 +42,51 @@ public class AbstractService<T> extends S2AbstractService<T> {
     protected LoginedUserDto loginedUserDto;
 
     *//**
-     * SQLのイメージと実行時間のログを出力する<br />
-     *
-     * @param start
-     * @param end
-     *//*
+        * SQLのイメージと実行時間のログを出力する<br />
+        *
+        * @param start
+        * @param end
+        */
+    /*
     public void sqlLogWrite(final long start,final long end) {
-        if(Defaults.isPublic() == false){
-            SqlLog sqlLog = sqlLogRegistry.getLast();
-            log.info(MfcStringUtil.toSqlLog(sqlLog));
-            log.info(MfcStringUtil.toFormattedTimeInStringForLog(end - start));
-        }
+     if(Defaults.isPublic() == false){
+         SqlLog sqlLog = sqlLogRegistry.getLast();
+         log.info(MfcStringUtil.toSqlLog(sqlLog));
+         log.info(MfcStringUtil.toFormattedTimeInStringForLog(end - start));
+     }
 
     }
 
     *//**
-     * SQL エラー発生時のログ
-     *//*
+        * SQL エラー発生時のログ
+        */
+    /*
     public void sqlErrorLogWrite(final Exception e) {
-        log.error("SQL ERROR!:",e);
+     log.error("SQL ERROR!:",e);
     }
 
     *//**
-     * エラー発生時のメッセージ
-     *//*
+        * エラー発生時のメッセージ
+        */
+    /*
     private String message;
 
     *//**
-     * @return message
-     *//*
+        * @return message
+        */
+    /*
     public String getMessage() {
-        return message;
+     return message;
     }
 
     *//**
-     * @param message セットする message
-     *//*
+        * @param message セットする message
+        */
+    /*
     public void setMessage(String message) {
-        this.message = message;
+     this.message = message;
     }
 
-*/
-
+    */
 
 }

@@ -7,7 +7,7 @@ import org.seasar.framework.util.StringUtil;
 
 public class WrapperRegexManager {
 
-    private WrapperRegexManager(){
+    private WrapperRegexManager() {
 
     }
 
@@ -20,13 +20,16 @@ public class WrapperRegexManager {
      * @return 一致したらTRUE
      *
      */
-    public static boolean isMatched(final String targetString,final String regexpPattern) {
-        if(StringUtil.isBlank(targetString)) {
+    public static boolean isMatched(final String targetString,
+            final String regexpPattern) {
+        if (StringUtil.isBlank(targetString)) {
             return false;
         }
-        if(StringUtil.isBlank(regexpPattern)) {
+
+        if (StringUtil.isBlank(regexpPattern)) {
             return false;
         }
+
         Pattern p = Pattern.compile(regexpPattern);
         Matcher m = p.matcher(targetString);
         return m.find();

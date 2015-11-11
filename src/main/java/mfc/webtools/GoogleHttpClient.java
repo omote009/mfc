@@ -70,7 +70,7 @@ public class GoogleHttpClient {
          */
         TagNode[] h3Nodes = tagNodeFromGoogle.getElementsByName("h3", true);
         for (TagNode h3Node : h3Nodes) {
-            if("r".equals(h3Node.getAttributeByName("class"))){
+            if ("r".equals(h3Node.getAttributeByName("class"))) {
                 TagNode aNode = h3Node.findElementByName("a", false);
                 if (aNode != null) {
                     GoogleSearchResult model = new GoogleSearchResult();

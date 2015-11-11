@@ -11,13 +11,14 @@ public class InstanceManager {
 
     /**
      * AtomicなMapオブジェクトを返す<br />
+     *
      * @param <T>
      * @param <K>
      *
      * @return
      */
-    public static <T, K> Map<T,K> newAtomicMap() {
-        return new ConcurrentHashMap<T,K>();
+    public static <T, K> Map<T, K> newAtomicMap() {
+        return new ConcurrentHashMap<T, K>();
     }
 
     /**
@@ -25,8 +26,8 @@ public class InstanceManager {
      *
      * @return
      */
-    public static  <T, K> Map<T,K> newNotAtomicMap() {
-        return new HashMap<T,K>();
+    public static <T, K> Map<T, K> newNotAtomicMap() {
+        return new HashMap<T, K>();
     }
 
     /**
@@ -34,11 +35,11 @@ public class InstanceManager {
      *
      * @return
      */
-    public static <T, K> Map<T,K> newMap() {
+    public static <T, K> Map<T, K> newMap() {
         return newNotAtomicMap();
     }
 
-     /**
+    /**
      *
      * Listのインスタンス生成。<br>
      * <br>
@@ -55,7 +56,7 @@ public class InstanceManager {
         return new CopyOnWriteArrayList<K>();
     }
 
-     /**
+    /**
      *
      * Listのインスタンス生成。<br>
      * <br>
@@ -80,6 +81,5 @@ public class InstanceManager {
     public static <K> List<K> newList() {
         return new ArrayList<K>();
     }
-
 
 }

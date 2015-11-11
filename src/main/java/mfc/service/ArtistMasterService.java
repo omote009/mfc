@@ -7,18 +7,15 @@ import org.seasar.framework.util.StringUtil;
 
 public class ArtistMasterService extends AbstractService<ArtistMr> {
 
-    public ArtistMr fetchSingle(final String id){
-        if(StringUtil.isBlank(id)){
+    public ArtistMr fetchSingle(final String id) {
+        if (StringUtil.isBlank(id)) {
             return null;
         }
         return select().where(
-                    new SimpleWhere()
-                        .eq("artistCode",id)
+                new SimpleWhere()
+                        .eq("artistCode", id)
                 )
                 .getSingleResult();
     }
-
-
-
 
 }

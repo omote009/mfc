@@ -38,7 +38,7 @@ public class ArtistMovieLinkServiceTest {
 
     @Test
     public void testAutomaticAddVideoLinkFromYoutube(){
-        int status = artistVideoLinkService.automaticAddVideoLinkFromYoutube("0FqJ0aYxgM");
+        int status = artistVideoLinkService.automaticAddVideoLinkFromYoutube("0OKeOmBsMw");
         System.out.println(Integer.valueOf(status));
         assertTrue(status >0);
     }
