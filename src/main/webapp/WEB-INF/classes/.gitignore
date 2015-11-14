@@ -4,11 +4,11 @@
 /convention.dicon
 /creator.dicon
 /customizer.dicon
-/data/
+/data
 /env.txt
 /env_ut.txt
 /jdbc.dicon
 /log4j.properties
-/mfc/
+/mfc
 /s2container.dicon
 /s2jdbc.dicon
