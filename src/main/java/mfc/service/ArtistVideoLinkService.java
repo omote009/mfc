@@ -103,7 +103,7 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
         // タイトルを検査して、MusicVideo,PV,公式などの名称があるものだけを登録対象とする。類似の名前も検査ではぶく。
         for (GoogleSearchResult node : listFromGoogle) {
             // URLからMOVIEキーを取り出し、MAPに同じキーがないばあいだけ登録対象に追加・MAPにも追加
-            if (isPvOrMvCheckOK(node.getTitle())) {
+            if (isPvOrMvCheckOK(node.getTitle(),artistName)) {
                 if (LinkAllowRegisterManager.isYouTube(node.getUrl())) {
                     String videoKeyFromGoogle = YouTubeManager
                             .getMoviekeyOfYoutubeFromSearchResult(node.getUrl());
@@ -129,24 +129,30 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
         return registerableMovieList;
     }
 
-    protected boolean isPvOrMvCheckOK(final String targetTitle) {
-        if (StringUtil.isBlank(targetTitle)) {
+    protected boolean isPvOrMvCheckOK(final String targetTitle,final String artistName) {
+        if (StringUtil.isBlank(targetTitle)||StringUtil.isBlank(artistName)) {
             return false;
         }
 
         boolean checkStatus = false;
 
         checkStatus = WrapperRegexManager.isMatched(
-                StringPrescribedManager.convert(targetTitle).toUpperCase(),
-                "^.*(PV|MV|MUSICVIDEO|MUSIC VIDEO|ミュージックビデオ).*$");
+                StringPrescribedManager.convertForMatch(targetTitle).toUpperCase(),
+                "^.*"+(StringPrescribedManager.convertForMatch(artistName).toUpperCase())+".*$");
+
         if(checkStatus == true){
-            boolean checkStatusOmit = WrapperRegexManager.isMatched(
+            checkStatus = WrapperRegexManager.isMatched(
                     StringPrescribedManager.convert(targetTitle).toUpperCase(),
-                    "^.*(新PV|新.PV|PV公開|PV.公開|PV解禁|PV.解禁|PV.秘密|PV作成|PV.作成|PV密着|PV.密着|PV画像|"
-                    + "新MV|新.MV|MV公開|MV.公開|MV解禁|MV.解禁|MV.秘密|MV作成|MV.作成|MV密着|MV.密着|SPECIAL MV|取材|カバー|コピー|主題歌|TV|"
-                    + "ニュース|歌ってみた|吹奏楽|PV.MV.フル|MV.PV.フル|フル.MV|フル.PV|フル.FULL|吹奏楽|コメント).*$");
-            if(checkStatusOmit == true){
-            	checkStatus = false;
+                    "^.*(PV|MV|MUSICVIDEO|MUSIC VIDEO|ミュージックビデオ).*$");
+            if(checkStatus == true){
+                boolean checkStatusOmit = WrapperRegexManager.isMatched(
+                        StringPrescribedManager.convert(targetTitle).toUpperCase(),
+                        "^.*(新PV|新.PV|PV公開|PV.公開|PV解禁|PV.解禁|PV.秘密|PV作成|PV.作成|PV密着|PV.密着|PV画像|"
+                        + "新MV|新.MV|MV公開|MV.公開|MV解禁|MV.解禁|MV.秘密|MV作成|MV.作成|MV密着|MV.密着|SPECIAL MV|取材|カバー|コピー|主題歌|TV|"
+                        + "ニュース|歌ってみた|吹奏楽|PV.MV.フル|MV.PV.フル|フル.MV|フル.PV|フル.FULL|吹奏楽|コメント).*$");
+                if(checkStatusOmit == true){
+                	checkStatus = false;
+                }
             }
         }
 
