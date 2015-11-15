@@ -147,9 +147,10 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
             if(checkStatus == true){
                 boolean checkStatusOmit = WrapperRegexManager.isMatched(
                         StringPrescribedManager.convert(targetTitle).toUpperCase(),
-                        "^.*(新PV|新.PV|PV公開|PV.公開|PV解禁|PV.解禁|PV.秘密|PV作成|PV.作成|PV密着|PV.密着|PV画像|"
+                        "^.*(新PV|新.PV|PV公開|PV.公開|PV解禁|PV.解禁|PV.秘密|PV作成|PV.作成|PV密着|PV.密着|PV画像|AMV|SUDDENATTACK|手書.PV|手書PV|OPV|"
                         + "新MV|新.MV|MV公開|MV.公開|MV解禁|MV.解禁|MV.秘密|MV作成|MV.作成|MV密着|MV.密着|SPECIAL MV|取材|カバー|コピー|主題歌|TV|"
-                        + "ニュース|歌ってみた|吹奏楽|PV.MV.フル|MV.PV.フル|フル.MV|フル.PV|フル.FULL|吹奏楽|コメント).*$");
+                        + "ニュース|歌ってみた|吹奏楽|PV.MV.フル|MV.PV.フル|フル.MV|フル.PV|フル.FULL|吹奏楽|コメント|MAKING|メイキング|MV.作.|[0-9]{1,2}月[0-9]{1,2}日|"
+                        + "1080PHD|720PHD|1080IHD).*$");
                 if(checkStatusOmit == true){
                 	checkStatus = false;
                 }

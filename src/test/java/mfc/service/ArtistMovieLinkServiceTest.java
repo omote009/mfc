@@ -52,6 +52,15 @@ public class ArtistMovieLinkServiceTest {
        	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("“酸欠少女”さユり、YKBKによる「ミカヅキ」の2.5次元パラレルなMVが解禁","酸欠少女”さユり"));
        	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("「talking」KANA-BOON　フル　pv","KANA-BOON"));
        	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("NMB48 「Must be now」 pv mv フル full - YouTube","NMB48 "));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("「OPV」私立恵比寿中学『PLAYBACK』 ","私立恵比寿中学"));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("手書きPV/じゃあ、何故/阿部真央/ver.アラビヨ ","阿部真央"));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("1080pHD UPLIFT SPICE オメガリズム MV ","UPLIFT SPICE"));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("[AMV] UPLIFT SPICE Omega Rythm ","UPLIFT SPICE"));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("SuddenAttack SACW Rualice. vs LE-LIEN PV 青　Cラッシュ止め 1/2 ","Le-Lien"));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("9月28日Le lien PV ","Le-Lien"));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("東京倉庫物語【第61話】東京倉庫がチャットモンチーのMVを作った理由 ","チャットモンチー"));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("黒木渚「革命」MV MAKING ","黒木渚"));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("[Alexandros] - Run Away (MV) - YouTube","黒木渚"));
        	assertTrue(artistVideoLinkService.isPvOrMvCheckOK("[Alexandros] - Run Away (MV) - YouTube","Alexandros"));
        	assertTrue(artistVideoLinkService.isPvOrMvCheckOK("Superfly『Beautiful』Music Video - YouTube","Superfly"));
       	assertTrue(artistVideoLinkService.isPvOrMvCheckOK("KANA-BOON 『フルドライブ』 MV- YouTube","KANA-BOON"));
@@ -59,7 +68,7 @@ public class ArtistMovieLinkServiceTest {
 
     @Test
     public void testAutomaticAddVideoLinkFromYoutube(){
-        int status = artistVideoLinkService.automaticAddVideoLinkFromYoutube("zY5qz6ALIb");
+        int status = artistVideoLinkService.automaticAddVideoLinkFromYoutube("ndkRX7SbXt");
         System.out.println(Integer.valueOf(status));
         assertTrue(status >=0);
     }
