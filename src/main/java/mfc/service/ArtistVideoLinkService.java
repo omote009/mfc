@@ -143,14 +143,16 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
         if(checkStatus == true){
             checkStatus = WrapperRegexManager.isMatched(
                     StringPrescribedManager.convert(targetTitle).toUpperCase(),
-                    "^.*(PV|MV|MUSICVIDEO|MUSIC VIDEO|ミュージックビデオ).*$");
+                    "^.*(PV|MV|MUSICVIDEO|MUSIC.VIDEO|ミュージックビデオ|ミュージック.ビデオ).*$");
             if(checkStatus == true){
                 boolean checkStatusOmit = WrapperRegexManager.isMatched(
                         StringPrescribedManager.convert(targetTitle).toUpperCase(),
-                        "^.*(新PV|新.PV|PV公開|PV.公開|PV解禁|PV.解禁|PV.秘密|PV作成|PV.作成|PV密着|PV.密着|PV画像|AMV|SUDDENATTACK|手書.PV|手書PV|OPV|"
-                        + "新MV|新.MV|MV公開|MV.公開|MV解禁|MV.解禁|MV.秘密|MV作成|MV.作成|MV密着|MV.密着|SPECIAL MV|取材|カバー|コピー|主題歌|TV|"
-                        + "ニュース|歌ってみた|吹奏楽|PV.MV.フル|MV.PV.フル|フル.MV|フル.PV|フル.FULL|吹奏楽|コメント|MAKING|メイキング|MV.作.|[0-9]{1,2}月[0-9]{1,2}日|"
-                        + "1080PHD|720PHD|1080IHD).*$");
+                        "^.*(踊ッテミタ|新PV|新.PV|PV公開|PV.公開|PV解禁|PV.解禁|PV.秘密|PV作成|PV.作成|PV密着|PV.密着|PV画像|[『【「（〈\\(《｛\\[]AMV|SUDDENATTACK|手書.PV|手書PV|[『【「｛\\(（〈《\\[]OPV|"
+                        + "新MV|新.MV|MV公開|MV.公開|MV解禁|MV.解禁|MV.秘密|MV作成|MV.作成|MV密着|MV.密着|SPECIAL MV|取材|カバー|コピー|主題歌|TV|PV特集|MV特集|PV集|MV集|厳選PV|厳選MV|"
+                        + "ニュース|歌ッテミタ|吹奏楽|PV.MV.フル|MV.PV.フル|フル.MV|フル.PV|フル.FULL|吹奏楽|コメント|MV.MAKING|メイキング|MV.作.|[0-9]{1,2}月[0-9]{1,2}日|"
+                        + "[『【「（\\(〈《｛\\[]HD|1080PHD|720PHD|1080IHD|[『【「（｛〈\\(《\\[]COVER|MV.COVER|PV.COVER|メドレー|カラオケ|歌詞付|傑作集|傑作選|MV.COPY|COPY.OF|PV.COPY|[『【「（｛〈\\(《\\[]COPY|"
+                        + "弾イテミタ|COVER[\\)\\]）』】」》｝]|COVER.MV|COVER.PV|COPY.MV|COPY.PV|[『【「（｛〈\\(《\\[]MMD|MMD[\\)\\]）』】」》｝]|HD[\\)\\]）』】」》｝]|"
+                        + "予告編|特典DVD|ALBUM TRAILER|告知|メンバー紹介|お知らせ|配信開始).*$");
                 if(checkStatusOmit == true){
                 	checkStatus = false;
                 }

@@ -26,8 +26,8 @@ public class ArtistMovieLinkServiceTest {
 
     @Test
     public void testUpdate(){
-        int status = artistVideoLinkService.updateWithJudgement("0FqJ0aYxgM", "INSERTTEST", ("https://www.youtube.com/watch?v=Y4iZWWGqjsc"));
-        assertTrue(status >0);
+    /*    int status = artistVideoLinkService.updateWithJudgement("0FqJ0aYxgM", "INSERTTEST", ("https://www.youtube.com/watch?v=Y4iZWWGqjsc"));
+        assertTrue(status >0);*/
 
     }
 
@@ -61,14 +61,23 @@ public class ArtistMovieLinkServiceTest {
        	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("東京倉庫物語【第61話】東京倉庫がチャットモンチーのMVを作った理由 ","チャットモンチー"));
        	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("黒木渚「革命」MV MAKING ","黒木渚"));
        	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("[Alexandros] - Run Away (MV) - YouTube","黒木渚"));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("サンボマスターの名曲だけを集めた厳選PV動画特集！ | Live ...- YouTube","サンボマスター"));
+      	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("歌ってみた サンボマスターの名曲だけを集めた PV | Live ...- YouTube","サンボマスター"));
+      	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("弾いてみた サンボマスターの名曲だけを集めた PV | Live ...- YouTube","サンボマスター"));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("MV 西野カナ『トリセツ』ヒロイン失格主題歌 (太郎あげあげcover)","西野カナ"));
+       	assertFalse(artistVideoLinkService.isPvOrMvCheckOK("【踊ってみた】チームしゃちほこ - じりじり夏活委員会 feat.しまじろう【MV Ver.】","チームしゃちほこ"));
        	assertTrue(artistVideoLinkService.isPvOrMvCheckOK("[Alexandros] - Run Away (MV) - YouTube","Alexandros"));
        	assertTrue(artistVideoLinkService.isPvOrMvCheckOK("Superfly『Beautiful』Music Video - YouTube","Superfly"));
       	assertTrue(artistVideoLinkService.isPvOrMvCheckOK("KANA-BOON 『フルドライブ』 MV- YouTube","KANA-BOON"));
+      	assertTrue(artistVideoLinkService.isPvOrMvCheckOK("MV UPLIFT SPICE Ramver Omega Rythm ","UPLIFT SPICE"));
+      	assertTrue(artistVideoLinkService.isPvOrMvCheckOK("PV 私立恵比寿中学『PLAYBACK TOPVAR』 ","私立恵比寿中学"));
+     	assertTrue(artistVideoLinkService.isPvOrMvCheckOK("TAKE COVER 「フィルム」Music Video ","TAKE COVER"));
+
     }
 
     @Test
     public void testAutomaticAddVideoLinkFromYoutube(){
-        int status = artistVideoLinkService.automaticAddVideoLinkFromYoutube("ndkRX7SbXt");
+        int status = artistVideoLinkService.automaticAddVideoLinkFromYoutube("4AtI5L8hHw");
         System.out.println(Integer.valueOf(status));
         assertTrue(status >=0);
     }
