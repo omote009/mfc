@@ -27,7 +27,7 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
      *
      * @param artistCode
      * @return DBに自動追加したレコード数<br>
-     *         0：すでに同じキーが登録済等の理由で登録レコードなし -2：Googleに接続できなかった
+     *         0：すでに同じキーが登録済等の理由で登録レコードなし /Googleに接続できなかった
      *
      */
     public int automaticAddVideoLinkFromYoutube(final String artistCode) {
@@ -57,9 +57,8 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
             System.out.println(sb.toString());
             List<GoogleSearchResult> listFromGoogle = httpClient
                     .responseFromGoogle(sb.toString());
-
             if (listFromGoogle == null || listFromGoogle.isEmpty()) {
-                return -2;
+                return 0;
             }
 
             // 登録可能な動画リストを取得する
@@ -93,16 +92,19 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
         Map<String, String> mapUrlForCheck = InstanceManager.newNotAtomicMap();
 
         // youtubeの動画のみ、listFromDb からmovieキーを取り出し、比較用MAPを生成する。
-        for (ArtistLink record : listFromDb) {
-            String videoKey = YouTubeManager.getMovieKeyOfYoutube(record
-                    .getLinkUrl());
-            // listFromGoogleのタイトルから、タイトルからアーティスト名や／や-などの区切り文字と左右の空白は除去する。
-            mapUrlForCheck.put(videoKey, videoKey);
-        }
+        if(listFromDb != null){
+            for (ArtistLink record : listFromDb) {
+                String videoKey = YouTubeManager.getMovieKeyOfYoutube(record
+                        .getLinkUrl());
+                // listFromGoogleのタイトルから、タイトルからアーティスト名や／や-などの区切り文字と左右の空白は除去する。
+                mapUrlForCheck.put(videoKey, videoKey);
+            }
+       }
 
         // タイトルを検査して、MusicVideo,PV,公式などの名称があるものだけを登録対象とする。類似の名前も検査ではぶく。
         for (GoogleSearchResult node : listFromGoogle) {
             // URLからMOVIEキーを取り出し、MAPに同じキーがないばあいだけ登録対象に追加・MAPにも追加
+        	//System.out.println(node.getTitle());
             if (isPvOrMvCheckOK(node.getTitle(),artistName)) {
                 if (LinkAllowRegisterManager.isYouTube(node.getUrl())) {
                     String videoKeyFromGoogle = YouTubeManager
@@ -138,12 +140,12 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
 
         checkStatus = WrapperRegexManager.isMatched(
                 StringPrescribedManager.convertForMatch(targetTitle).toUpperCase(),
-                "^.*"+(StringPrescribedManager.convertForMatch(artistName).toUpperCase())+".*$");
+                "^.*"+ StringPrescribedManager.convertForMatch(artistName).toUpperCase()+".*$");
 
         if(checkStatus == true){
             checkStatus = WrapperRegexManager.isMatched(
                     StringPrescribedManager.convert(targetTitle).toUpperCase(),
-                    "^.*(PV|MV|MUSICVIDEO|MUSIC.VIDEO|ミュージックビデオ|ミュージック.ビデオ).*$");
+                    "^.*(MV|MUSICVIDEO|MUSIC.VIDEO|ミュージックビデオ|ミュージック.ビデオ).*$");
             if(checkStatus == true){
                 boolean checkStatusOmit = WrapperRegexManager.isMatched(
                         StringPrescribedManager.convert(targetTitle).toUpperCase(),
@@ -152,7 +154,9 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
                         + "ニュース|歌ッテミタ|吹奏楽|PV.MV.フル|MV.PV.フル|フル.MV|フル.PV|フル.FULL|吹奏楽|コメント|MV.MAKING|メイキング|MV.作.|[0-9]{1,2}月[0-9]{1,2}日|"
                         + "[『【「（\\(〈《｛\\[]HD|1080PHD|720PHD|1080IHD|[『【「（｛〈\\(《\\[]COVER|MV.COVER|PV.COVER|メドレー|カラオケ|歌詞付|傑作集|傑作選|MV.COPY|COPY.OF|PV.COPY|[『【「（｛〈\\(《\\[]COPY|"
                         + "弾イテミタ|COVER[\\)\\]）』】」》｝]|COVER.MV|COVER.PV|COPY.MV|COPY.PV|[『【「（｛〈\\(《\\[]MMD|MMD[\\)\\]）』】」》｝]|HD[\\)\\]）』】」》｝]|"
-                        + "予告編|特典DVD|ALBUM TRAILER|告知|メンバー紹介|お知らせ|配信開始).*$");
+                        + "予告編|特典DVD|ALBUM TRAILER|告知|メンバー紹介|お知らせ|配信開始|1[0-9][0-9][0-9]X|修正版|ビデオを公開|HMV共催|[0-9]開催|"
+                        + "ビデオ解禁|ビデオ.解禁|ビデオ公開|ビデオ作成|ビデオ.作成|ビデオ特集|ビデオ集|[0-9]{1,2}\\/[0-9]{1,2}|FULL.フル|"
+                        + "MV!|MVデ|MVガ|MVヲ|MVハ|MV！).*$");
                 if(checkStatusOmit == true){
                 	checkStatus = false;
                 }
