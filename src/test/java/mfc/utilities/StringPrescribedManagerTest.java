@@ -14,7 +14,8 @@ public class StringPrescribedManagerTest {
 
     @Test
     public void testConvertForMatch() {
-        String converted = StringPrescribedManager.convertForMatch("【植田真梨恵】(ｳｴﾀﾞﾏﾘｴ）らいぶ 「Ｓ・Ｏ・Ｓ」１２３４５６");
+        String converted = StringPrescribedManager
+                .convertForMatch("【植田真梨恵】(ｳｴﾀﾞﾏﾘｴ）らいぶ 「Ｓ・Ｏ・Ｓ」１２３４５６");
         System.out.println(converted);
         assertTrue(converted.equals("植田真梨恵ウエダマリエライブSOS123456"));
     }

@@ -61,12 +61,9 @@ public class GoogleHttpClient {
                 .newAtomicList();
 
         /*
-         * Google検索結果のタイトル部のリンクは以下のように格納されている
-         * 	<h3 class="r">
-         * 	  <a href="/url?q=http://www.youtube.com/watch%3Fv%3Dy_ThicJX1Ck">
-         * 		【<b>XXXXX</b>】「Are you ready？」BOMBER-E LIVE - YouTube
-         *    </a>
-         *  </h3>
+         * Google検索結果のタイトル部のリンクは以下のように格納されている <h3 class="r"> <a
+         * href="/url?q=http://www.youtube.com/watch%3Fv%3Dy_ThicJX1Ck">
+         * 【<b>XXXXX</b>】「Are you ready？」BOMBER-E LIVE - YouTube </a> </h3>
          */
         TagNode[] h3Nodes = tagNodeFromGoogle.getElementsByName("h3", true);
         for (TagNode h3Node : h3Nodes) {
@@ -76,7 +73,7 @@ public class GoogleHttpClient {
                     GoogleSearchResult model = new GoogleSearchResult();
                     model.setUrl(aNode.getAttributeByName("href"));
                     model.setTitle(aNode.getText().toString());
-                    //Descriptionは使わないので取得していない。
+                    // Descriptionは使わないので取得していない。
                     model.setDescription("");
                     googleSearchResultList.add(model);
                 }

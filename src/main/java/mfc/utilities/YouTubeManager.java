@@ -208,7 +208,9 @@ public class YouTubeManager {
                 .rtrim(targetString));
         String trimedEraceString = StringUtil.ltrim(StringUtil
                 .rtrim(eraceString));
-        String regex =  trimedEraceString + "|"+ StringPrescribedManager.convertForMatch(trimedEraceString) +"|YouTube|[\\-\\[\\]【】]";
+        String regex = trimedEraceString + "|"
+                + StringPrescribedManager.convertForMatch(trimedEraceString)
+                + "|YouTube|[\\-\\[\\]【】]";
         Pattern p = Pattern.compile(regex);
         return StringUtil.ltrim(p.matcher(trimedTargetString).replaceAll(""));
 

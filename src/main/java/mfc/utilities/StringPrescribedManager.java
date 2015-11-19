@@ -86,7 +86,7 @@ public class StringPrescribedManager {
         }
 
         String trimedString = StringUtil.ltrim(StringUtil.rtrim(inputedString));
-        String regex = "[\\s|　|・|;|:|：|；|＿|_|．|\\.|\\t|\\-|－|／|\\/|\\\\|\\(|\\)|「|」|『|』|【|】|\\(|\\)|（|）]";
+        String regex = "[\\s|　|・|;|:|：|；|＿|_|．|\\.|\\t|\\-|－|／|\\/|\\\\|\\(|\\)|「|」|『|』|【|】|\\(|\\)|（|）|\\[|\\]|《|》]";
         Pattern p = Pattern.compile(regex);
         return p.matcher(trimedString).replaceAll("");
     }
