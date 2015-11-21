@@ -208,11 +208,24 @@ public class YouTubeManager {
                 .rtrim(targetString));
         String trimedEraceString = StringUtil.ltrim(StringUtil
                 .rtrim(eraceString));
-        String regex = trimedEraceString + "|"
-                + StringPrescribedManager.convertForMatch(trimedEraceString)
+        String regex = escapeRegexParentheses(trimedEraceString)
+               //+ "|[\\]\\]]"
+               // + StringPrescribedManager.convertForMatch(trimedEraceString)
                 + "|YouTube|[\\-\\[\\]【】]";
         Pattern p = Pattern.compile(regex);
-        return StringUtil.ltrim(p.matcher(trimedTargetString).replaceAll(""));
+        return StringUtil.rtrim(StringUtil.ltrim(p.matcher(trimedTargetString).replaceAll("")));
+
+    }
+
+    /**
+     * 正規表現に利用する文字をエスケープした文字列を出力する
+     */
+    public static String escapeRegexParentheses(final String sourceString){
+        if(StringUtil.isBlank(sourceString)){
+            return "";
+        }
+        String returnFirst = sourceString.replaceAll("[\\[\\]]", "");
+       return returnFirst;
 
     }
 

@@ -85,10 +85,7 @@ public class YouTubeManagerTest {
 
     @Test
     public void testTitle() {
-        System.out.println(YouTubeManager.trimForVideoTitle(
-                "UPLIFT SPICE「マイノリティパレード」 - YouTube", "UPLIFT SPICE"));
-        assertTrue("「マイノリティパレード」 ".equals(YouTubeManager.trimForVideoTitle(
-                "UPLIFT SPICE「マイノリティパレード」 - YouTube", "UPLIFT SPICE")));
+
         System.out.println(YouTubeManager.trimForVideoTitle(
                 "植田真梨恵「彼に守ってほしい10のこと」PV - YouTube", "植田真梨恵"));
         assertTrue("「彼に守ってほしい10のこと」PV".equals(YouTubeManager.trimForVideoTitle(
@@ -102,6 +99,14 @@ public class YouTubeManagerTest {
         assertTrue("『Beautiful』Music Video".equals(YouTubeManager
                 .trimForVideoTitle("Superfly『Beautiful』Music Video - YouTube",
                         "Superfly")));
+        System.out.println(YouTubeManager.trimForVideoTitle(
+                "[Alexandros] - Run Away (MV) - YouTube", "[Alexandros]"));
+        assertTrue("Run Away (MV)".equals(YouTubeManager
+                .trimForVideoTitle("[Alexandros] - Run Away (MV) - YouTube", "[Alexandros]")));
+        System.out.println(YouTubeManager.trimForVideoTitle(
+                "UPLIFT SPICE「マイノリティパレード」 - YouTube", "UPLIFT SPICE"));
+        assertTrue("「マイノリティパレード」".equals(YouTubeManager.trimForVideoTitle(
+                "UPLIFT SPICE「マイノリティパレード」 - YouTube", "UPLIFT SPICE")));
     }
 
     @Test
