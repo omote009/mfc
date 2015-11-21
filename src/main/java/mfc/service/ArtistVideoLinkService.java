@@ -138,10 +138,23 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
         }
 
         boolean checkStatus = false;
+        String convertedArtistName = StringPrescribedManager.convertForMatch(artistName);
         checkStatus = WrapperRegexManager.isMatched(
                 StringPrescribedManager.convertForMatch(targetTitle), "^("
-                        + StringPrescribedManager.convertForMatch(artistName)
+                        + convertedArtistName
+                        + "|MV"
+                        + convertedArtistName
                         + ").*");
+
+        if(checkStatus == false){
+            checkStatus = WrapperRegexManager.isMatched(
+                    StringPrescribedManager.convertForMatch(targetTitle), "^.*("
+                            + "BY"
+                            + convertedArtistName
+                            + "|\\/"
+                            + convertedArtistName
+                            + ").*");
+        }
 
         if (checkStatus == true) {
             checkStatus = WrapperRegexManager.isMatched(StringPrescribedManager

@@ -141,13 +141,18 @@ public class ArtistMovieLinkServiceTest {
                 "阿部芙蓉美"));
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "[Alexandros] - Run Away (MV) - YouTube", "Alexandros"));
-
+        assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
+                "【MV】Riverside Creature『最少愛』", "Riverside Creature"));
+        assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
+                "\"Beautiful Flight\" / performed by H ZETTRIO 【Official MV】", "H ZETTRIO"));
+        assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
+                "\"Beautiful Flight\" / H ZETTRIO 【Official MV】", "H ZETTRIO"));
     }
 
     @Test
     public void testAutomaticAddVideoLinkFromYoutube() {
         int status = artistVideoLinkService
-                .automaticAddVideoLinkFromYoutube("cUnrZHB2EY");
+                .automaticAddVideoLinkFromYoutube("Fl1FqAeUCh");
         System.out.println(Integer.valueOf(status));
         assertTrue(status >= 0);
         /*
