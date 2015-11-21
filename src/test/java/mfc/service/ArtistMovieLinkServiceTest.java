@@ -125,6 +125,9 @@ public class ArtistMovieLinkServiceTest {
                 "Against All Enemies.wmv", "Against All Enemies"));
         assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                 "「IGNITE」AMV 藍井 エイル Cover と歌詞", "藍井 エイル"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "Anti-Hero//Death Note AMV// Sekai No Owari", "Sekai No Owari"));
+
 
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "Superfly『Beautiful』Music Video - YouTube", "Superfly"));
@@ -140,7 +143,7 @@ public class ArtistMovieLinkServiceTest {
                 "阿部芙蓉美(Fuyumi Abe)「A thousand days of love」/ music video",
                 "阿部芙蓉美"));
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
-                "[Alexandros] - Run Away (MV) - YouTube", "Alexandros"));
+                "[Alexandros] - Run Away (MV) - YouTube", "[Alexandros]"));
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "【MV】Riverside Creature『最少愛』", "Riverside Creature"));
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
@@ -152,7 +155,7 @@ public class ArtistMovieLinkServiceTest {
     @Test
     public void testAutomaticAddVideoLinkFromYoutube() {
         int status = artistVideoLinkService
-                .automaticAddVideoLinkFromYoutube("Fl1FqAeUCh");
+                .automaticAddVideoLinkFromYoutube("vTazeNyjcQ");
         System.out.println(Integer.valueOf(status));
         assertTrue(status >= 0);
         /*
