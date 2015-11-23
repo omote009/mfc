@@ -27,7 +27,8 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
      *
      * @param artistCode
      * @return DBに自動追加したレコード数<br>
-     *         0：すでに同じキーが登録済等の理由で登録レコードなし /Googleに接続できなかった
+     *         0：すでに同じキーが登録済等の理由で登録レコードなし <br/>
+     *         -2: Googleから1件も取得できなかった（拒否）または、接続できなかった
      *
      */
     public int automaticAddVideoLinkFromYoutube(final String artistCode) {
@@ -58,7 +59,7 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
             List<GoogleSearchResult> listFromGoogle = httpClient
                     .responseFromGoogle(sb.toString());
             if (listFromGoogle == null || listFromGoogle.isEmpty()) {
-                return 0;
+                return -2;
             }
 
             // 登録可能な動画リストを取得する
