@@ -127,7 +127,18 @@ public class ArtistMovieLinkServiceTest {
                 "「IGNITE」AMV 藍井 エイル Cover と歌詞", "藍井 エイル"));
         assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                 "Anti-Hero//Death Note AMV// Sekai No Owari", "Sekai No Owari"));
-
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "Stereo Osaka 2015.08.08 HMV三宮VIVRE 2部 Edge Dub Monkeyz", "Stereo Osaka"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "Stereo Osaka(ステレオ大阪)HMV三宮店　「Endelss Dokidoki Mode」", "Stereo Osaka"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "Stereo Osaka in HMV Sannomiya", "Stereo Osaka"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "Stereo Osaka(ステレオ大阪)HMV三宮店　「Osaka GEISHA Dancing」", "Stereo Osaka"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "Stereo Osaka インストアライブ HMV三宮(一部) 2015.08.08", "Stereo Osaka"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "Stereo Osaka(ステレオ大阪)HMV三宮店　「Electron」", "Stereo Osaka"));
 
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "Superfly『Beautiful』Music Video - YouTube", "Superfly"));
@@ -154,10 +165,10 @@ public class ArtistMovieLinkServiceTest {
 
     @Test
     public void testAutomaticAddVideoLinkFromYoutube() {
-        int status = artistVideoLinkService
+      /*  int status = artistVideoLinkService
                 .automaticAddVideoLinkFromYoutube("vTazeNyjcQ");
         System.out.println(Integer.valueOf(status));
-        assertTrue(status >= 0);
+        assertTrue(status >= 0);*/
         /*
          * assertTrue(artistVideoLinkService.automaticAddVideoLinkFromYoutube(
          * "0FqJ0aYxgM")>=0);
