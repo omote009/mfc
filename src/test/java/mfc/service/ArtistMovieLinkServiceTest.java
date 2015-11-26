@@ -139,6 +139,8 @@ public class ArtistMovieLinkServiceTest {
                 "Stereo Osaka インストアライブ HMV三宮(一部) 2015.08.08", "Stereo Osaka"));
         assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                 "Stereo Osaka(ステレオ大阪)HMV三宮店　「Electron」", "Stereo Osaka"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "SpecialThanks 【SpecialThanks】I MY ME MINEミュージックビデオ撮影 - 2012.11月吉日", "SpecialThanks"));
 
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "Superfly『Beautiful』Music Video - YouTube", "Superfly"));
