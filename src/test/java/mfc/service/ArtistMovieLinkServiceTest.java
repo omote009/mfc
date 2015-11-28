@@ -141,6 +141,11 @@ public class ArtistMovieLinkServiceTest {
                 "Stereo Osaka(ステレオ大阪)HMV三宮店　「Electron」", "Stereo Osaka"));
         assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                 "SpecialThanks 【SpecialThanks】I MY ME MINEミュージックビデオ撮影 - 2012.11月吉日", "SpecialThanks"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "井手綾香 井手綾香 - 「235」「消えてなくなれ、夕暮れ」Music Videoスペシャル先行映像", "井手綾香"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "May J.『Rewind』MUSIC VIDEO / Back To Your Heart feat. Daniel Powter 先行試聴音", "May J"));
+
 
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "Superfly『Beautiful』Music Video - YouTube", "Superfly"));

@@ -175,14 +175,14 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
                                         + "吹奏楽|コメント|MV.MAKING|メイキング|MV.作.|[0-9]{1,2}月[0-9]{1,2}日|"
                                         + "[『【「（\\(〈《｛\\[]HD|1080PHD|720PHD|1080IHD|[『【「（｛〈\\(《\\[]COVER|MV.COVER|"
                                         + "PV.COVER|メドレー|カラオケ|歌詞付|傑作集|傑作選|MV.COPY|COPY.OF|PV.COPY|"
-                                        + "[『【「（｛〈\\(《\\[]COPY|AMV\\/|HMV|MV撮影|"
+                                        + "[『【「（｛〈\\(《\\[]COPY|AMV\\/|HMV|MV撮影|[0-9]{1,2}\\/[0-9]{1,2}|"
                                         + "弾イテミタ|COVER[\\)\\]）』】」》｝]|COVER.MV|COVER.PV|COPY.MV|"
                                         + "COPY.PV|[『【「（｛〈\\(《\\[]MMD|MMD[\\)\\]）』】」》｝]|HD[\\)\\]）』】」》｝]|"
                                         + "予告編|特典DVD|ALBUM TRAILER|告知|メンバー紹介|オ知ラセ|配信開始|"
                                         + "1[0-9][0-9][0-9]X|修正版|ビデオヲ公開|HMV共催|[0-9]開催|"
                                         + "ビデオ解禁|ビデオ.解禁|ビデオ公開|ビデオ作成|ビデオ.作成|ビデオ特集|ビデオ集|"
-                                        + "[0-9]{1,2}\\/[0-9]{1,2}|FULL.フル|"
-                                        + "MVデ|MVガ|MVヲ|MVハ|MV！|\\.WMV|ミュージックビデオハ|"
+                                        + "[0-9]{1,2}\\/[0-9]{1,2}|FULL.フル|MV(.*)先行|ミュージックビデオ(.*)先行|MUSIC VIDEO(.*)先行|"
+                                        + "MVデ|MVガ|MVヲ|MVハ|MV！|\\.WMV|ミュージックビデオハ|MUSICVIDEO(.*)先行|PV(.*)先行|"
                                         + "ミュージックビデオガ|ミュージックビデオヲ|ミュージックビデオ撮影|新ミュージックビデオ|新.ミュージックビデオ).*$");
                 if (checkStatusOmit == true) {
                     checkStatus = false;
