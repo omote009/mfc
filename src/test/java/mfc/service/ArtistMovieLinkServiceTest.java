@@ -145,6 +145,9 @@ public class ArtistMovieLinkServiceTest {
                 "井手綾香 井手綾香 - 「235」「消えてなくなれ、夕暮れ」Music Videoスペシャル先行映像", "井手綾香"));
         assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                 "May J.『Rewind』MUSIC VIDEO / Back To Your Heart feat. Daniel Powter 先行試聴音", "May J"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "9月28日Le lien PV", "Le lien"));
+
 
 
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
@@ -172,10 +175,10 @@ public class ArtistMovieLinkServiceTest {
 
     @Test
     public void testAutomaticAddVideoLinkFromYoutube() {
-      /*  int status = artistVideoLinkService
-                .automaticAddVideoLinkFromYoutube("vTazeNyjcQ");
+        int status = artistVideoLinkService
+                .automaticAddVideoLinkFromYoutube("c3Ds0hdo5o");
         System.out.println(Integer.valueOf(status));
-        assertTrue(status >= 0);*/
+        assertTrue(status >= 0);
         /*
          * assertTrue(artistVideoLinkService.automaticAddVideoLinkFromYoutube(
          * "0FqJ0aYxgM")>=0);

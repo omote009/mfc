@@ -160,7 +160,7 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
         if (checkStatus == true) {
             checkStatus = WrapperRegexManager.isMatched(StringPrescribedManager
                     .convert(targetTitle).toUpperCase(),
-                    "^.*(MV|MUSICVIDEO|MUSIC VIDEO|ミュージックビデオ|ミュージック.ビデオ).*$");
+                    "^.*(PV|MV|MUSICVIDEO|MUSIC VIDEO|ミュージックビデオ|ミュージック.ビデオ).*$");
             if (checkStatus == true) {
                 boolean checkStatusOmit = WrapperRegexManager
                         .isMatched(
