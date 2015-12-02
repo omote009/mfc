@@ -166,7 +166,7 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
                         .isMatched(
                                 StringPrescribedManager.convert(targetTitle)
                                         .toUpperCase(),
-                                "^.*(踊ッテミタ|新PV|新.PV|PV公開|PV.公開|PV解禁|PV.解禁|PV.秘密|PV作成|PV.作成|"
+                                "^.*(踊ッテミタ|新PV|新.PV|PV公開|PV.公開|PV解禁|PV.解禁|PV.秘密|PV作成|PV.作成|♫|"
                                         + "PV密着|PV.密着|PV画像|[『【「（〈\\(《｛\\[]AMV|SUDDENATTACK|手書.PV|手書PV|[『【「｛\\(（〈《\\[]OPV|"
                                         + "新MV|新.MV|MV公開|MV.公開|MV解禁|MV.解禁|MV.秘密|MV作成|"
                                         + "MV.作成|MV密着|MV.密着|SPECIAL MV|取材|カバー|コピー|主題歌|"

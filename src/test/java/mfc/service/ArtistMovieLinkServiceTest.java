@@ -147,6 +147,9 @@ public class ArtistMovieLinkServiceTest {
                 "May J.『Rewind』MUSIC VIDEO / Back To Your Heart feat. Daniel Powter 先行試聴音", "May J"));
         assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                 "9月28日Le lien PV", "Le lien"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "Яeal ♥ яeal нorses #2 | ♫ music video ♫", "Яeal"));
+
 
 
 
@@ -175,10 +178,10 @@ public class ArtistMovieLinkServiceTest {
 
     @Test
     public void testAutomaticAddVideoLinkFromYoutube() {
-        int status = artistVideoLinkService
+     /*   int status = artistVideoLinkService
                 .automaticAddVideoLinkFromYoutube("c3Ds0hdo5o");
         System.out.println(Integer.valueOf(status));
-        assertTrue(status >= 0);
+        assertTrue(status >= 0);*/
         /*
          * assertTrue(artistVideoLinkService.automaticAddVideoLinkFromYoutube(
          * "0FqJ0aYxgM")>=0);
