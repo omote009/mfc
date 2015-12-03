@@ -65,7 +65,7 @@ public class StringPrescribedManager {
     }
 
     /**
-     * 比較用規定文字列に変換。空白などを詰め、英字はすべて大文字に変換する。
+     * 比較用規定文字列に変換。括弧、空白などを詰め、英字はすべて大文字に変換する。
      *
      * @param str
      * @return
@@ -73,6 +73,17 @@ public class StringPrescribedManager {
     public static String convertForMatch(final String str) {
         return convert(prescribedTrim(str)).toUpperCase();
     }
+
+    /**
+     * 比較用規定文字列に変換。空白などを詰め、英字はすべて大文字に変換する。
+     *
+     * @param str
+     * @return
+     */
+    public static String convertForMatchOtherThanParentheses(final String str) {
+        return convert(prescribedTrimOtherThanParentheses(str)).toUpperCase();
+    }
+
 
     /**
      * 文字列の空白や_などを取り除き、圧縮する。
@@ -87,6 +98,23 @@ public class StringPrescribedManager {
 
         String trimedString = StringUtil.ltrim(StringUtil.rtrim(inputedString));
         String regex = "[\\s|　|・|;|:|：|；|＿|_|．|\\.|\\t|\\-|－|\\\\|\\(|\\)|「|」|『|』|【|】|\\(|\\)|（|）|\\[|\\]|《|》|\\\"|”]";
+        Pattern p = Pattern.compile(regex);
+        return p.matcher(trimedString).replaceAll("");
+    }
+
+    /**
+     * 文字列の空白や_などを取り除き、圧縮する。
+     *
+     * @param inputedString
+     * @return 空白などを取り除いた文字列
+     */
+    public static String prescribedTrimOtherThanParentheses(final String inputedString) {
+        if (StringUtil.isBlank(inputedString)) {
+            return "";
+        }
+
+        String trimedString = StringUtil.ltrim(StringUtil.rtrim(inputedString));
+        String regex = "[\\s|　|・|;|:|：|；|＿|_|．|\\.|\\t|\\-|－|\\\\|\\\"|”]";
         Pattern p = Pattern.compile(regex);
         return p.matcher(trimedString).replaceAll("");
     }

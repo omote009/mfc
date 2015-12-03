@@ -149,9 +149,15 @@ public class ArtistMovieLinkServiceTest {
                 "9月28日Le lien PV", "Le lien"));
         assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                 "Яeal ♥ яeal нorses #2 | ♫ music video ♫", "Яeal"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "I-RabBits [I-Rabbits MMV concert] Part", "I-RabBits"));
+        assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "LALALA - THAITANIUM (Official Music video)", "LALALA"));
+         assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                "SOLIDEMO / 「Girlfriend」MUSIC VIDEO", "GIRLFRIEND"));
 
-
-
+        assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
+                "SOLIDEMO / 「Girlfriend」MUSIC VIDEO", "SOLIDEMO"));
 
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "Superfly『Beautiful』Music Video - YouTube", "Superfly"));
