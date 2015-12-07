@@ -155,6 +155,11 @@ public class ArtistMovieLinkServiceTest {
                 "LALALA - THAITANIUM (Official Music video)", "LALALA"));
          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                 "SOLIDEMO / 「Girlfriend」MUSIC VIDEO", "GIRLFRIEND"));
+         assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                 "LiSA Empty MERMAID MV 特殊メイク 黒い人魚", "LISA"));
+         assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                 "Little Glee Monster 『好きだ。』MV SELF REVIEW", "Little Glee Monster"));
+
 
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "SOLIDEMO / 「Girlfriend」MUSIC VIDEO", "SOLIDEMO"));

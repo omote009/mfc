@@ -14,7 +14,7 @@ import org.seasar.framework.util.StringUtil;
 
 public class GoogleHttpClient {
 
-    Logger log = Logger.getLogger(GoogleHttpClient.class);
+    private Logger log = Logger.getLogger(GoogleHttpClient.class);
 
     /**
      * グーグル検索を行い、検索結果を解析し、GoogleSearchResultのリストを返す。
@@ -22,7 +22,7 @@ public class GoogleHttpClient {
      * @param parameter
      * @return
      */
-    public List<GoogleSearchResult> responseFromGoogle(final String parameter) {
+    public final List<GoogleSearchResult> responseFromGoogle(final String parameter) {
 
         String body;
         String url = "https://www.google.co.jp/search?num=100&q=";

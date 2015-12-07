@@ -2,7 +2,7 @@ package mfc.utilities;
 
 import org.seasar.framework.util.StringUtil;
 
-public class LinkAllowRegisterManager {
+public final class LinkAllowRegisterManager {
 
     private LinkAllowRegisterManager() {
 

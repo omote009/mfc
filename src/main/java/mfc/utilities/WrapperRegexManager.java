@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import org.seasar.framework.util.StringUtil;
 
-public class WrapperRegexManager {
+public final class WrapperRegexManager {
 
     private WrapperRegexManager() {
 

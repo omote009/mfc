@@ -23,6 +23,8 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
     @Resource
     private ArtistMasterService artistMasterService;
 
+    private final int googleCannotAccess = -2;
+
     /**
      *
      * @param artistCode
@@ -31,7 +33,7 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
      *         -2: Googleから1件も取得できなかった（拒否）または、接続できなかった
      *
      */
-    public int automaticAddVideoLinkFromYoutube(final String artistCode) {
+    public final int automaticAddVideoLinkFromYoutube(final String artistCode) {
         if (StringUtil.isBlank(artistCode)) {
             return 0;
         }
@@ -59,7 +61,7 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
             List<GoogleSearchResult> listFromGoogle = httpClient
                     .responseFromGoogle(sb.toString());
             if (listFromGoogle == null || listFromGoogle.isEmpty()) {
-                return -2;
+                return googleCannotAccess;
             }
 
             // 登録可能な動画リストを取得する
@@ -132,37 +134,35 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
         return registerableMovieList;
     }
 
-    protected boolean isPvOrMvCheckOK(final String targetTitle,
+    protected final boolean isPvOrMvCheckOK(final String targetTitle,
             final String artistName) {
         if (StringUtil.isBlank(targetTitle) || StringUtil.isBlank(artistName)) {
             return false;
         }
 
         boolean checkStatus = false;
-        String convertedArtistName = StringPrescribedManager.convertForMatch(artistName);
-        //System.out.println(convertedArtistName + "::" + StringPrescribedManager.convertForMatch(targetTitle));
+        String convertedArtistName = StringPrescribedManager
+                .convertForMatch(artistName);
+        // System.out.println(convertedArtistName + "::" +
+        // StringPrescribedManager.convertForMatch(targetTitle));
         checkStatus = WrapperRegexManager.isMatched(
                 StringPrescribedManager.convertForMatch(targetTitle), "^("
-                        + convertedArtistName
-                        + "|MV"
-                        + convertedArtistName
+                        + convertedArtistName + "|MV" + convertedArtistName
                         + ").*");
 
-        if(checkStatus == false){
-            checkStatus = WrapperRegexManager.isMatched(
-                    StringPrescribedManager.convertForMatchOtherThanParentheses(targetTitle), "^.*("
-                            + "BY"
-                            + convertedArtistName
-                            + "|\\/"
-                            + convertedArtistName
-                            + ").*");
+        if (!checkStatus) {
+            checkStatus = WrapperRegexManager.isMatched(StringPrescribedManager
+                    .convertForMatchOtherThanParentheses(targetTitle), "^.*("
+                    + "BY" + convertedArtistName + "|\\/" + convertedArtistName
+                    + ").*");
         }
 
-        if (checkStatus == true) {
-            checkStatus = WrapperRegexManager.isMatched(StringPrescribedManager
-                    .convert(targetTitle).toUpperCase(),
-                    "^.*(PV|MV|MUSICVIDEO|MUSIC VIDEO|ミュージックビデオ|ミュージック.ビデオ).*$");
-            if (checkStatus == true) {
+        if (checkStatus) {
+            checkStatus = WrapperRegexManager
+                    .isMatched(StringPrescribedManager.convert(targetTitle)
+                            .toUpperCase(),
+                            "^.*(PV|MV|MUSICVIDEO|MUSIC VIDEO|ミュージックビデオ|ミュージック.ビデオ).*$");
+            if (checkStatus) {
                 boolean checkStatusOmit = WrapperRegexManager
                         .isMatched(
                                 StringPrescribedManager.convert(targetTitle)
@@ -179,13 +179,13 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
                                         + "[『【「（｛〈\\(《\\[]COPY|AMV\\/|HMV|MV撮影|[0-9]{1,2}\\/[0-9]{1,2}|"
                                         + "弾イテミタ|COVER[\\)\\]）』】」》｝]|COVER.MV|COVER.PV|COPY.MV|"
                                         + "COPY.PV|[『【「（｛〈\\(《\\[]MMD|MMD[\\)\\]）』】」》｝]|HD[\\)\\]）』】」》｝]|"
-                                        + "予告編|特典DVD|ALBUM TRAILER|告知|メンバー紹介|オ知ラセ|配信開始|"
-                                        + "1[0-9][0-9][0-9]X|修正版|ビデオヲ公開|HMV共催|[0-9]開催|"
+                                        + "予告編|特典DVD|ALBUM TRAILER|告知|メンバー紹介|オ知ラセ|配信開始|REVIEW|レビュー|"
+                                        + "1[0-9][0-9][0-9]X|修正版|ビデオヲ公開|HMV共催|[0-9]開催|特殊メイク|"
                                         + "ビデオ解禁|ビデオ.解禁|ビデオ公開|ビデオ作成|ビデオ.作成|ビデオ特集|ビデオ集|"
                                         + "[0-9]{1,2}\\/[0-9]{1,2}|FULL.フル|MV(.*)先行|ミュージックビデオ(.*)先行|MUSIC VIDEO(.*)先行|"
                                         + "MVデ|MVガ|MVヲ|MVハ|MV！|\\.WMV|ミュージックビデオハ|MUSICVIDEO(.*)先行|PV(.*)先行|"
                                         + "ミュージックビデオガ|ミュージックビデオヲ|ミュージックビデオ撮影|新ミュージックビデオ|新.ミュージックビデオ).*$");
-                if (checkStatusOmit == true) {
+                if (checkStatusOmit) {
                     checkStatus = false;
                 }
             }
@@ -195,7 +195,7 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
 
     }
 
-    public List<ArtistLink> fetcheList(final String artistCode) {
+    public final List<ArtistLink> fetcheList(final String artistCode) {
 
         if (StringUtil.isBlank(artistCode)) {
             return null;
@@ -206,7 +206,7 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
 
     }
 
-    public ArtistLink fetcheSingle(final String artistCode,
+    public final ArtistLink fetcheSingle(final String artistCode,
             final String displayTitle) {
 
         if (StringUtil.isBlank(artistCode) || StringUtil.isBlank(displayTitle)) {
@@ -219,7 +219,7 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
 
     }
 
-    public int updateWithJudgement(final String artistCode,
+    public final int updateWithJudgement(final String artistCode,
             final String displayTitle, final String movieUrl) {
 
         if (StringUtil.isBlank(artistCode) || StringUtil.isBlank(displayTitle)

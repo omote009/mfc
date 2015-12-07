@@ -5,7 +5,11 @@ import java.util.regex.Pattern;
 
 import org.seasar.framework.util.StringUtil;
 
-public class YouTubeManager {
+public final class YouTubeManager {
+
+    private YouTubeManager(){
+
+    }
 
     /**
      * ユーチューブAPIで利用可能なURLを返す。<br/>
@@ -24,7 +28,7 @@ public class YouTubeManager {
         sb.append("http://www.youtube.com/embed/");
         sb.append(movieKey);
 
-        if (isMobile == true) {
+        if (isMobile) {
             sb.append("?enablejsapi=1&origin=http://example.com");
         } else {
             sb.append("?enablejsapi=1&origin=http://example.com&autoplay=1");

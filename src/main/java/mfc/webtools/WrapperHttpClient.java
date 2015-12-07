@@ -26,16 +26,16 @@ public class WrapperHttpClient {
 
     }
 
-    Logger log = Logger.getLogger(WrapperHttpClient.class);
+    private Logger log = Logger.getLogger(WrapperHttpClient.class);
     /*
      * 接続が確立するまでの待ち時間（ミリ秒）。
      */
-    private final int CONNECTION_TIMEOUT_VALUE_IN_MILLISECOND = 10000; // 10秒
+    private final int connectionTimeoutValueInMillisecond = 10000; // 10秒
 
     /*
      * 接続後、データを取得してレスポンスを得るまでの待ち時間（ミリ秒）。
      */
-    private final int RESPONSE_TIMEOUT_VALUE_IN_MILLISECOND = 90000; // 90秒
+    private final int responseTimeoutValueInMillisecond = 90000; // 90秒
 
     /**
      * 汎用：HttpClientオブジェクト初期化
@@ -44,8 +44,8 @@ public class WrapperHttpClient {
      */
     private HttpClient instanceBuild() {
         // configurations
-        int socketTimeout = RESPONSE_TIMEOUT_VALUE_IN_MILLISECOND;
-        int connectionTimeout = CONNECTION_TIMEOUT_VALUE_IN_MILLISECOND;
+        int socketTimeout = responseTimeoutValueInMillisecond;
+        int connectionTimeout = connectionTimeoutValueInMillisecond;
 
         String userAgent = "httpClient. to internal operation";
         // request configuration
@@ -73,7 +73,7 @@ public class WrapperHttpClient {
      * @param url
      * @return
      */
-    public String responsePost(final String url) {
+    public final String responsePost(final String url) {
         int responseStatus = 0;
         try {
             HttpClient httpClient = instanceBuild();
@@ -97,7 +97,7 @@ public class WrapperHttpClient {
      * @param url
      * @return
      */
-    public String responseGet(final String url) {
+    public final String responseGet(final String url) {
         int responseStatus = 0;
         try {
             HttpClient httpClient = instanceBuild();

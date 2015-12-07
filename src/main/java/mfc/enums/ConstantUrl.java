@@ -6,7 +6,7 @@ public enum ConstantUrl {
 
     ROOTURL{
         String get(){
-            if(Defaults.isPublic() == true){
+            if(Defaults.isPublic()){
                 return "http://music-fan.club/mfc/";
             }else{
                 return "http://localhost:8080/mfc/";

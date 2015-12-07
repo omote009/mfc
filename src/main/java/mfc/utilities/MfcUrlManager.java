@@ -2,7 +2,7 @@ package mfc.utilities;
 
 import mfc.consts.Defaults;
 
-public class MfcUrlManager {
+public final class MfcUrlManager {
 
     private MfcUrlManager() {
 

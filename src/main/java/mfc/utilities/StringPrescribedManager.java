@@ -10,7 +10,7 @@ import org.seasar.framework.util.StringUtil;
  * @author omote
  *
  */
-public class StringPrescribedManager {
+public final class StringPrescribedManager {
 
     private StringPrescribedManager() {
 
@@ -126,7 +126,7 @@ public class StringPrescribedManager {
      *            変換前文字列
      * @return 変換後文字列
      */
-    public static String hanToZenKanaStr(String hanKanaString) {
+    public static String hanToZenKanaStr(final String hanKanaString) {
         if (hanKanaString == null) {
             return "";
         }
@@ -307,7 +307,7 @@ public class StringPrescribedManager {
      *            変換前の文字
      * @return 変換後の文字
      */
-    protected static char hanToZenkanaChar(char hanKana) {
+    protected static char hanToZenkanaChar(final char hanKana) {
         if (hanKana >= HAN_AKANA_FIRST_CHAR && hanKana <= HAN_KANA_LAST_CHAR) {
             return ZEN_AKANA_TBL[hanKana - HAN_AKANA_FIRST_CHAR];
         } else {
@@ -327,7 +327,7 @@ public class StringPrescribedManager {
      *            変換前の2文字目
      * @return 変換後の文字
      */
-    protected static char hanToZenKanaMergeChar(char hanKana1, char hanKana2) {
+    protected static char hanToZenKanaMergeChar(final char hanKana1, final char hanKana2) {
         if (hanKana2 == 'ﾞ') {
             if (" ｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾊﾋﾌﾍﾎ ".indexOf(hanKana1) > 0) {
                 switch (hanKana1) {

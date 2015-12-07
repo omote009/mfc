@@ -7,7 +7,7 @@ import org.seasar.framework.util.StringUtil;
 
 public class ArtistMasterService extends AbstractService<ArtistMr> {
 
-    public ArtistMr fetchSingle(final String id) {
+    public final ArtistMr fetchSingle(final String id) {
         if (StringUtil.isBlank(id)) {
             return null;
         }
