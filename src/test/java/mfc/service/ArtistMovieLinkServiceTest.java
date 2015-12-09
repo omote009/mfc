@@ -159,6 +159,9 @@ public class ArtistMovieLinkServiceTest {
                  "LiSA Empty MERMAID MV 特殊メイク 黒い人魚", "LISA"));
          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                  "Little Glee Monster 『好きだ。』MV SELF REVIEW", "Little Glee Monster"));
+         assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                 "【MV】蜜恋(ハニー)ライアー！？　[しゅみしゅみ/仲谷明香]", "蜜"));
+
 
 
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
