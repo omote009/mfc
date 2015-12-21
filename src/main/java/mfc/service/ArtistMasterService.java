@@ -1,5 +1,7 @@
 package mfc.service;
 
+import java.util.List;
+
 import mfc.entity.ArtistMr;
 
 import org.seasar.extension.jdbc.where.SimpleWhere;
@@ -17,5 +19,9 @@ public class ArtistMasterService extends AbstractService<ArtistMr> {
                 )
                 .getSingleResult();
     }
+
+    public final List<ArtistMr> fetchAll(){
+        return select().getResultList();
+     }
 
 }

@@ -161,6 +161,11 @@ public class ArtistMovieLinkServiceTest {
                  "Little Glee Monster 『好きだ。』MV SELF REVIEW", "Little Glee Monster"));
          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                  "【MV】蜜恋(ハニー)ライアー！？　[しゅみしゅみ/仲谷明香]", "蜜"));
+          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                 "♥ яeal нorses #2 | ♫ music video ♫ Яeal†waR　PV", "яeal"));
+          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                  "モハメド・アヴドゥル ＆ マジシャンズレッド PV", "モハメド"));
+
 
 
 
