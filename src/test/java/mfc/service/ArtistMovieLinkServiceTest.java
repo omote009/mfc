@@ -165,8 +165,10 @@ public class ArtistMovieLinkServiceTest {
                  "♥ яeal нorses #2 | ♫ music video ♫ Яeal†waR　PV", "яeal"));
           assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                   "モハメド・アヴドゥル ＆ マジシャンズレッド PV", "モハメド"));
-
-
+          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                  "【MAYU】Love Logic【オリジナル・MMD-PV】", "Mayu"));
+          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                  "Sekirara Candy Anime PV", "Sekirara"));
 
 
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(

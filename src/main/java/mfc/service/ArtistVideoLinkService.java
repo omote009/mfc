@@ -173,7 +173,7 @@ public class ArtistVideoLinkService extends AbstractService<ArtistLink> {
                                         + "PV密着|PV.密着|PV画像|[『【「（〈\\(《｛\\[]AMV|SUDDENATTACK|手書.PV|手書PV|[『【「｛\\(（〈《\\[]OPV|"
                                         + "新MV|新.MV|MV公開|MV.公開|MV解禁|MV.解禁|MV.秘密|MV作成|マジシャンズレッド|"
                                         + "MV.作成|MV密着|MV.密着|SPECIAL MV|取材|カバー|コピー|主題歌|"
-                                        + "PV特集|MV特集|PV集|MV集|厳選PV|厳選MV|？|！|"
+                                        + "PV特集|MV特集|PV集|MV集|厳選PV|厳選MV|？|！|ANIME|MMD-PV|"
                                         + "ニュース|歌ッテミタ|吹奏楽|PV.MV.フル|MV.PV.フル|フル.MV|フル.PV|フル.FULL|"
                                         + "吹奏楽|コメント|MV.MAKING|メイキング|MV.作.|[0-9]{1,2}月[0-9]{1,2}日|"
                                         + "[『【「（\\(〈《｛\\[]HD|1080PHD|720PHD|1080IHD|[『【「（｛〈\\(《\\[]COVER|MV.COVER|"
