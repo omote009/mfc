@@ -28,4 +28,13 @@ public class ArtistBoxService extends AbstractService<ArtistTypeList> {
         return returnMap;
     }
 
+    public final int getAllCount(){
+        long tmpCount = select().getCount();
+        if(tmpCount > (long)Integer.MAX_VALUE){
+            return Integer.MAX_VALUE;
+        }else{
+            return (int)tmpCount;
+        }
+    }
+
 }

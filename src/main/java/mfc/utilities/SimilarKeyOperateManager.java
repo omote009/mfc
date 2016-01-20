@@ -9,7 +9,11 @@ import java.util.List;
 
 import org.seasar.framework.util.ResourceUtil;
 
-public class SimilarKeyOperateManager {
+public final class SimilarKeyOperateManager {
+
+    private SimilarKeyOperateManager(){
+
+    }
 
     /**
      * ファイルを読み、登録されているテキストを連結したテキストを返す。<br/>

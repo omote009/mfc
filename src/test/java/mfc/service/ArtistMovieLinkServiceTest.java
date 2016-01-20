@@ -168,8 +168,21 @@ public class ArtistMovieLinkServiceTest {
           assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
                   "【MAYU】Love Logic【オリジナル・MMD-PV】", "Mayu"));
           assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
-                  "Sekirara Candy Anime PV", "Sekirara"));
-
+                  "天才バンド、ニューアルバムよりリードトラック「ロックジェネレーション」MVを公開", "天才バンド"));
+          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                  "AMV Gintama | Renho Arc. | Dilemma by Ecosystem", "Ecosystem"));
+          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                  "secret/ecosystem 自作MV", "ecosystem"));
+          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                  "【NANOSCALE TV vol.4】～PV撮影編～", "NANOSCALE"));
+          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                  "「AZUMI幕末編」イメージPV1", "AZUMI"));
+          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                  "AZUMI-あずみ-の小山ゆう最新作『雄飛 ゆうひ』PV", "AZUMI"));
+          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                  "LAMP IN TERREN - 緑閃光 |MV Reaction|", "LAMP IN TERREN"));
+          assertFalse(artistVideoLinkService.isPvOrMvCheckOK(
+                  "The BEG - PV撮影オフショット集 -", "The BEG"));
 
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "SOLIDEMO / 「Girlfriend」MUSIC VIDEO", "SOLIDEMO"));
@@ -178,8 +191,8 @@ public class ArtistMovieLinkServiceTest {
                 "Superfly『Beautiful』Music Video - YouTube", "Superfly"));
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "KANA-BOON 『フルドライブ』 MV- YouTube", "KANA-BOON"));
-        assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
-                "UPLIFT SPICE Ramver Omega Rythm MV", "UPLIFT SPICE"));
+        //assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
+        //        "UPLIFT SPICE Ramver Omega Rythm MV", "UPLIFT SPICE"));
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "私立恵比寿中学『PLAYBACK TOPVAR』 MV ", "私立恵比寿中学"));
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
