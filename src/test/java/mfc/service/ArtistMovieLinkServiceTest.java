@@ -208,6 +208,11 @@ public class ArtistMovieLinkServiceTest {
                 "\"Beautiful Flight\" / performed by H ZETTRIO 【Official MV】", "H ZETTRIO"));
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "\"Beautiful Flight\" / H ZETTRIO 【Official MV】", "H ZETTRIO"));
+        assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
+                "HEADLAMP 『ウチュウイチ』 (OFFICIAL VIDEO)", "HEADLAMP"));
+        assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
+                "SHE'S/ Leave Me (MV)", "SHE'S"));
+
     }
 
     @Test
