@@ -34,4 +34,23 @@ public class SimilarArtistServiceSub {
             return WrapperRegexManager.isMatched(targetAppeal, sb.toString());
         }
     }
+
+    /**
+     * 名前が含まれているかどうかを検査する
+     */
+    public static boolean isContainArtistNameInAppeal(final String targetAppeal,final String artistName1){
+        if(StringUtil.isBlank(targetAppeal)){
+            return false;
+         }
+        StringBuilder sb = new StringBuilder();
+        if(StringUtil.isBlank(artistName1)){
+            return false;
+        }else{
+            sb.append("^.*(");
+            sb.append(StringPrescribedManager.convertForMatch(artistName1));
+            sb.append(").*$");
+            return WrapperRegexManager.isMatched(targetAppeal, sb.toString());
+        }
+    }
+
 }

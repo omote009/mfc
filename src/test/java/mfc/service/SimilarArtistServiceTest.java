@@ -24,19 +24,25 @@ public class SimilarArtistServiceTest {
     public void testGetListSimilarArtist() {
         List<String> aList = similarArtistService.getListSimilarArtist("YiT1qIskIX");
         assertEquals("4b3eNldJnx",aList.get(0));
-        System.out.println(aList.get(0));
-        List<String> bList = similarArtistService.getListSimilarArtist("0FqJ0aYxgM");
-        System.out.println(bList.get(0));
-    }
+        List<String> bList = similarArtistService.getListSimilarArtist("XuEnDyJ3Ck");
+        for(int i=0;i < bList.size();i++){
+            System.out.println(bList.get(i));
+        }
+        List<String> cList = similarArtistService.getListSimilarArtist("c3Ds0hdo5o");
+        for(int l=0;l < cList.size();l++){
+            System.out.println(cList.get(l));
+        }
+        List<String> eList = similarArtistService.getListSimilarArtist("c3Ds0hdo5o",1);
+        assertEquals("oTrdLPcb2k",eList.get(0));
+        List<String> dList = similarArtistService.getListSimilarArtist("vBMhEQYagi");
+        for(int l=0;l < dList.size();l++){
+            System.out.println(dList.get(l));
+        }
+        List<String> fList = similarArtistService.getListSimilarArtist("");
+        for(int l=0;l < fList.size();l++){
+            System.out.println(dList.get(l));
+        }
 
-    @Test
-    public void testGetSub001(){
-         double confidence = Double.valueOf("2") / Double.valueOf("3") ;
-         System.out.println(String.format("%1.10f",confidence) + "_" + "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-         double support = Double.valueOf("2") / Double.valueOf("10") ;
-         System.out.println(String.format("%1.10f",support) + "_" + "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-         double lift = confidence / support;
-         System.out.println(String.format("%1.10f",lift) + "_" + "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
     }
 
     @Test
@@ -51,10 +57,6 @@ public class SimilarArtistServiceTest {
         Collections.sort(artistCodeListForSortWork,new LiftComparator());
         String[] chks = artistCodeListForSortWork.get(0).split("_");
         assertEquals("DDDDD",chks[1]);
-        for(String aCode : artistCodeListForSortWork){
-            String[] tmps = aCode.split("_");
-            System.out.println(tmps[1]);
-        }
     }
 
 }
