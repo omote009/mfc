@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import mfc.condition.LiftComparator;
+import mfc.dto.ExclusionArtistListDto;
 import mfc.utilities.InstanceManager;
 
 import org.junit.Test;
@@ -20,6 +21,7 @@ public class SimilarArtistServiceTest {
     @Resource
     private SimilarArtistService similarArtistService;
 
+
     @Test
     public void testGetListSimilarArtist() {
         List<String> aList = similarArtistService.getListSimilarArtist("YiT1qIskIX");
@@ -28,19 +30,26 @@ public class SimilarArtistServiceTest {
         for(int i=0;i < bList.size();i++){
             System.out.println(bList.get(i));
         }
-        List<String> cList = similarArtistService.getListSimilarArtist("c3Ds0hdo5o");
+        List<String> eList = similarArtistService.getListSimilarArtist("c3Ds0hdo5o");
+        assertEquals("oTrdLPcb2k",eList.get(0));
+        for(int l=0;l < eList.size();l++){
+            System.out.println(eList.get(l));
+        }
+        ExclusionArtistListDto exclusionArtistListSub = new ExclusionArtistListDto();
+        exclusionArtistListSub.addExclusionArtistList("oTrdLPcb2k");
+        exclusionArtistListSub.addExclusionArtistList("FoFYHc6SQv");
+        List<String> cList = similarArtistService.getListSimilarArtist("c3Ds0hdo5o",exclusionArtistListSub.getExclusionArtistList());
         for(int l=0;l < cList.size();l++){
             System.out.println(cList.get(l));
         }
-        List<String> eList = similarArtistService.getListSimilarArtist("c3Ds0hdo5o",1);
-        assertEquals("oTrdLPcb2k",eList.get(0));
+
         List<String> dList = similarArtistService.getListSimilarArtist("vBMhEQYagi");
         for(int l=0;l < dList.size();l++){
             System.out.println(dList.get(l));
         }
         List<String> fList = similarArtistService.getListSimilarArtist("");
         for(int l=0;l < fList.size();l++){
-            System.out.println(dList.get(l));
+            System.out.println(fList.get(l));
         }
 
     }

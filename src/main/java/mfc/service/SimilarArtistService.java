@@ -24,24 +24,40 @@ public class SimilarArtistService extends AbstractService<ArtistTypeList> {
     @Resource
     private ArtistBoxService artistBoxService;
 
+    public final List<String> getListSimilarArtist(final String artistCode,final List<String> exclusionArtistList){
+        final int limit = 10;
+        return getListSimilarArtist(artistCode,limit,exclusionArtistList);
+    }
     public final List<String> getListSimilarArtist(final String artistCode){
         final int limit = 10;
         return getListSimilarArtist(artistCode,limit);
     }
 
+    public final List<String> getListSimilarArtist(final String artistCode,final int limit){
+        List<String> dummyList = InstanceManager.newNotAtomicList();
+        return getListSimilarArtist(artistCode,limit,dummyList);
+    }
+
     /**
-     * 指定したアーティストの類似アーティストを30件返す<br/>
+     * 指定したアーティストの類似アーティストを返す<br/>
      *
      * @param artistCode
      * @return
      */
-    public final List<String> getListSimilarArtist(final String artistCode,final int limit){
+    public final List<String> getListSimilarArtist(final String artistCode,final int limit,final List<String> exclusionArtistList){
 
         // return用のリスト／追加された順番が優先順位を示す
         List<String> artistCodeList = InstanceManager.newAtomicList();
+        Map<String,String> exclusionArtistMap = InstanceManager.newAtomicMap();
 
         if(limit <=0){
             return artistCodeList;
+        }
+
+        if(exclusionArtistList != null){
+            for(String exArtistCode : exclusionArtistList){
+                exclusionArtistMap.put(exArtistCode, exArtistCode);
+            }
         }
 
         // XとY（類似アーティスト候補）の両方を含む要素をカウントする
@@ -94,26 +110,28 @@ public class SimilarArtistService extends AbstractService<ArtistTypeList> {
                 for(ArtistMr mr:artistMrList){
                     // 同一アーティストは無視する
                     if(!mr.getArtistCode().equals(artistCode)){
-                        String targetAppeal = StringPrescribedManager.convertForMatch(mr.getArtistApeal());
-                        // アピールに指定アーティストの名前が含まれていれば、リターンのリストに追加する。（最優先になる）
-                        if(SimilarArtistServiceSub.isContainArtistNameInAppeal(targetAppeal,specifiedArtist.getArtistName1())){
-                            artistCodeList.add(mr.getArtistCode());
-                        }else{
-                            // アーティストのキャラにキーワードが含まれるか検査し、一致したら件数をカウントアップする
-                            int intXy = 0;
-                            for(String key: similarMatchKeywrdList){
-                                if(WrapperRegexManager.isMatched(targetAppeal, key)){
-                                    intXy++;
+                        if(exclusionArtistMap.get(mr.getArtistCode())== null){
+                            String targetAppeal = StringPrescribedManager.convertForMatch(mr.getArtistApeal());
+                            // アピールに指定アーティストの名前が含まれていれば、リターンのリストに追加する。（最優先になる）
+                            if(SimilarArtistServiceSub.isContainArtistNameInAppeal(targetAppeal,specifiedArtist.getArtistName1())){
+                                artistCodeList.add(mr.getArtistCode());
+                            }else{
+                                // アーティストのキャラにキーワードが含まれるか検査し、一致したら件数をカウントアップする
+                                int intXy = 0;
+                                for(String key: similarMatchKeywrdList){
+                                    if(WrapperRegexManager.isMatched(targetAppeal, key)){
+                                        intXy++;
+                                    }
                                 }
-                            }
-                            // アーティストコードがBOXに含まれるかを検査し、一致したらさらに件数をカウントアップする
-                            for(String boxMatchedKeyCode : mapOfMatchedArtistCodeListInBox.keySet()){
-                                if(WrapperRegexManager.isMatched(mapOfArtistCodeListInBox.get(boxMatchedKeyCode),mr.getArtistCode())){
-                                    mapOfMatchedArtistCodeListInBox.put(boxMatchedKeyCode, mapOfArtistCodeListInBox.get(boxMatchedKeyCode));
-                                    intXy++;
+                                // アーティストコードがBOXに含まれるかを検査し、一致したらさらに件数をカウントアップする
+                                for(String boxMatchedKeyCode : mapOfMatchedArtistCodeListInBox.keySet()){
+                                    if(WrapperRegexManager.isMatched(mapOfArtistCodeListInBox.get(boxMatchedKeyCode),mr.getArtistCode())){
+                                        mapOfMatchedArtistCodeListInBox.put(boxMatchedKeyCode, mapOfArtistCodeListInBox.get(boxMatchedKeyCode));
+                                        intXy++;
+                                    }
                                 }
+                                containXandYcodeMap.put(mr.getArtistCode(), Integer.valueOf(intXy));
                             }
-                            containXandYcodeMap.put(mr.getArtistCode(), Integer.valueOf(intXy));
                         }
                     }
                 }
