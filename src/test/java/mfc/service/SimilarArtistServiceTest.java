@@ -43,7 +43,7 @@ public class SimilarArtistServiceTest {
             System.out.println(cList.get(l));
         }
 
-        List<String> dList = similarArtistService.getListSimilarArtist("vBMhEQYagi");
+        List<String> dList = similarArtistService.getListSimilarArtist("RvO4dLFMPw");
         for(int l=0;l < dList.size();l++){
             System.out.println(dList.get(l));
         }

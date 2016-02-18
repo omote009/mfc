@@ -212,6 +212,8 @@ public class ArtistMovieLinkServiceTest {
                 "HEADLAMP 『ウチュウイチ』 (OFFICIAL VIDEO)", "HEADLAMP"));
         assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
                 "SHE'S/ Leave Me (MV)", "SHE'S"));
+        assertTrue(artistVideoLinkService.isPvOrMvCheckOK(
+                "ONE OK ROCK - The Way Back - Japanese Ver. - [Official Music Video]", "ONE OK ROCK"));
 
     }
 

@@ -16,6 +16,8 @@ import mfc.utilities.SimilarKeyOperateManager;
 import mfc.utilities.StringPrescribedManager;
 import mfc.utilities.WrapperRegexManager;
 
+import org.seasar.framework.util.StringUtil;
+
 public class SimilarArtistService extends AbstractService<ArtistTypeList> {
 
     @Resource
@@ -74,24 +76,27 @@ public class SimilarArtistService extends AbstractService<ArtistTypeList> {
         ArtistMr specifiedArtist = artistMasterService.fetchSingle(artistCode);
 
         if(specifiedArtist != null){
-            String[] appeals = specifiedArtist.getArtistApeal().split("[,、]");
-            String targetString = StringPrescribedManager.convertForMatch(specifiedArtist.getArtistApeal());
+            String artistApealStr = specifiedArtist.getArtistApeal();
+            if(!StringUtil.isBlank(artistApealStr)){
+                String[] appeals = artistApealStr.split("[,、]");
+                String targetString = StringPrescribedManager.convertForMatch(artistApealStr);
+                // 汎用キーワードリストを、指定アーティストにマッチするものだけに絞り込む
+                for(String keyword: similarKeywordsList){
+                    if(WrapperRegexManager.isMatched(targetString, keyword)){
+                        similarMatchKeywrdList.add(keyword);
+                    }
+                 }
 
-            // 汎用キーワードリストを、指定アーティストにマッチするものだけに絞り込む
-            for(String keyword: similarKeywordsList){
-                if(WrapperRegexManager.isMatched(targetString, keyword)){
-                    similarMatchKeywrdList.add(keyword);
+                // 指定アーティストキャラのキーワードを絞り込んだキーワードリストに追加する。
+                for(int i =0;i<appeals.length;i++){
+                    StringBuilder tmpsb = new StringBuilder();
+                    tmpsb.append("^.*(");
+                       tmpsb.append(appeals[i]);
+                       tmpsb.append(").*$");
+                       similarMatchKeywrdList.add(tmpsb.toString()) ;
                 }
-             }
-
-            // 指定アーティストキャラのキーワードを絞り込んだキーワードリストに追加する。
-            for(int i =0;i<appeals.length;i++){
-                StringBuilder tmpsb = new StringBuilder();
-                tmpsb.append("^.*(");
-                   tmpsb.append(appeals[i]);
-                   tmpsb.append(").*$");
-                   similarMatchKeywrdList.add(tmpsb.toString()) ;
             }
+
 
             // BOXリストから登録されたBOXコードとアーティストコードの全件リストを作る
             Map<String,String> mapOfArtistCodeListInBox = artistBoxService.getMapOfSameBoxArtistList();
