@@ -40,4 +40,31 @@ public class ArtistMasterServiceTest {
 
     }
 
+    @Test
+    public void testCalcPoint(){
+        String testKey = "ahlw3JZhob";
+        Long lb =artistMasterService.fetchSingle(testKey).getArtistEvaluateValue();
+        long tmpLongBefore = 0L;
+        if(lb == null){
+
+        }else{
+            tmpLongBefore = lb.longValue();
+        }
+
+        artistMasterService.calcEvaluatePoint(testKey, 2L);
+          Long la =artistMasterService.fetchSingle(testKey).getArtistEvaluateValue();
+        long tmpLongAfter = la.longValue();
+        assertTrue((tmpLongBefore +2L)== tmpLongAfter );
+
+        artistMasterService.calcEvaluatePoint(testKey, -2L);
+          Long la2 =artistMasterService.fetchSingle(testKey).getArtistEvaluateValue();
+        long tmpLongAfter2= la2.longValue();
+        assertTrue((tmpLongAfter -2L)== tmpLongAfter2 );
+
+        artistMasterService.calcEvaluatePoint(testKey, -99L);
+          Long la3 =artistMasterService.fetchSingle(testKey).getArtistEvaluateValue();
+        assertTrue(la3.longValue()== 0L);
+
+    }
+
 }

@@ -25,10 +25,18 @@ public class ArtistMasterService extends AbstractService<ArtistMr> {
      }
 
     public final int addEvaluatePointFromView(final String artistCode){
+
+        return calcEvaluatePoint(artistCode,1L);
+
+    }
+
+    public final int calcEvaluatePoint(final String artistCode,final long value){
+
         int returnCode = 0;
         if(StringUtil.isBlank(artistCode)){
             return 0;
         }
+
         ArtistMr mr = fetchSingle(artistCode);
         if(mr == null){
             return 0;
@@ -37,7 +45,17 @@ public class ArtistMasterService extends AbstractService<ArtistMr> {
         if(tmpValue == null){
             mr.setArtistEvaluateValue(Long.valueOf(0L));
         }else{
-            mr.setArtistEvaluateValue(Long.valueOf(tmpValue.longValue() +1L));
+            if(value < 0){
+                if((value * -1L) < tmpValue.longValue()){
+                    mr.setArtistEvaluateValue(Long.valueOf(tmpValue.longValue() + value));
+                }else{
+                    // 元の値より、引く値が大きい時はゼロにしてしまう。
+                    mr.setArtistEvaluateValue(Long.valueOf(0L));
+                }
+            }else{
+                mr.setArtistEvaluateValue(Long.valueOf(tmpValue.longValue() + value));
+            }
+
         }
         returnCode = jdbcManager.update(mr).execute();
 
