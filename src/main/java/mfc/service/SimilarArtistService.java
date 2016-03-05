@@ -125,8 +125,7 @@ public class SimilarArtistService extends AbstractService<ArtistTypeList> {
                     // 同一アーティストは無視する
                     if (!mr.getArtistCode().equals(artistCode)) {
                         if (exclusionArtistMap.get(mr.getArtistCode()) == null) {
-                            String targetAppeal = StringPrescribedManager
-                                    .convertForMatch(mr.getArtistApeal());
+                            String targetAppeal = StringPrescribedManager.convertForMatch(mr.getArtistApeal());
                             // アピールに指定アーティストの名前が含まれていれば、リターンのリストに追加する。（最優先になる）
                             if (SimilarArtistServiceSub.isContainArtistNameInAppeal(targetAppeal,specifiedArtist.getArtistName1())) {
                                 artistCodeList.add(mr.getArtistCode());

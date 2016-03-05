@@ -24,4 +24,26 @@ public class ArtistMasterService extends AbstractService<ArtistMr> {
         return select().getResultList();
      }
 
+    public final int addEvaluatePointFromView(final String artistCode){
+        int returnCode = 0;
+        if(StringUtil.isBlank(artistCode)){
+            return 0;
+        }
+        ArtistMr mr = fetchSingle(artistCode);
+        if(mr == null){
+            return 0;
+        }
+        Long tmpValue = mr.getArtistEvaluateValue();
+        if(tmpValue == null){
+            mr.setArtistEvaluateValue(Long.valueOf(0L));
+        }else{
+            mr.setArtistEvaluateValue(Long.valueOf(tmpValue.longValue() +1L));
+        }
+        returnCode = jdbcManager.update(mr).execute();
+
+        return returnCode;
+    }
+
+
+
 }

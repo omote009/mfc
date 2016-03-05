@@ -21,4 +21,23 @@ public class ArtistMasterServiceTest {
           assertTrue("LAGOON".equals(artistMasterService.fetchSingle(testKey).getArtistName1()));
     }
 
+    @Test
+    public void testAddPoint(){
+        String testKey = "0kDcUtjryG";
+        Long lb =artistMasterService.fetchSingle(testKey).getArtistEvaluateValue();
+        long tmpLongBefore = 0L;
+        if(lb == null){
+
+        }else{
+            tmpLongBefore = lb.longValue();
+        }
+
+        artistMasterService.addEvaluatePointFromView(testKey);
+        Long la =artistMasterService.fetchSingle(testKey).getArtistEvaluateValue();
+        long tmpLongAfter = la.longValue();
+        assertTrue((tmpLongBefore +1L)== tmpLongAfter );
+        assertTrue(artistMasterService.addEvaluatePointFromView("") == 0);
+
+    }
+
 }
