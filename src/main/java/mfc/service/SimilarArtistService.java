@@ -7,7 +7,7 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
-import mfc.condition.LiftComparator;
+import mfc.condition.ReverseStringComparator;
 import mfc.entity.ArtistMr;
 import mfc.entity.ArtistTypeList;
 import mfc.sub.SimilarArtistServiceSub;
@@ -185,7 +185,7 @@ public class SimilarArtistService extends AbstractService<ArtistTypeList> {
                         + String.format("%010d", tmp) + "_" + artistCodeKey);
             }
             // 結果のリストを降順にソートする。（一致件数の大きい順にならべかえる）
-            Collections.sort(artistCodeListForSortWork, new LiftComparator());
+            Collections.sort(artistCodeListForSortWork, new ReverseStringComparator());
 
             // ソートした結果のリストを順に処理し、アーティストコードのみのリストを作る。これをリターンする。
             for (String aCode : artistCodeListForSortWork) {

@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import mfc.condition.LiftComparator;
+import mfc.condition.ReverseStringComparator;
 import mfc.dto.ExclusionArtistListDto;
 import mfc.utilities.InstanceManager;
 
@@ -63,7 +63,7 @@ public class SimilarArtistServiceTest {
         artistCodeListForSortWork.add(String.format("%1.10f", Double.valueOf("3") / Double.valueOf("10")) + "_" + "CCCCC");
         artistCodeListForSortWork.add(String.format("%1.10f", Double.valueOf("4") / Double.valueOf("10")) + "_" + "DDDDD");
 
-        Collections.sort(artistCodeListForSortWork,new LiftComparator());
+        Collections.sort(artistCodeListForSortWork,new ReverseStringComparator());
         String[] chks = artistCodeListForSortWork.get(0).split("_");
         assertEquals("DDDDD",chks[1]);
     }

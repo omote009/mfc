@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import org.seasar.framework.util.StringUtil;
 
-public class LiftComparator implements Comparator<String> {
+public class ReverseStringComparator implements Comparator<String> {
 
     @Override
     public int compare(String src1, String src2) {
