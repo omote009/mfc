@@ -24,63 +24,63 @@ public class RelevantData extends AbstractEntity {
     @Column(name = "relevant_name")
     private String relevantName;
 
-    /*心地よい*/
+    // わくわく・期待
     @Column(name = "param_str_01")
     private String paramStr01;
 
-    /*おもしろい*/
+    // おもしろい・楽しい
     @Column(name = "param_str_02")
     private String paramStr02;
 
-    /*しっとり*/
+    // 軽快さ
     @Column(name = "param_str_03")
     private String paramStr03;
 
-    /*せつない*/
+    // 心地よい・リラックス
     @Column(name = "param_str_04")
     private String paramStr04;
 
-    /*わくわく*/
+    // しっとり・落ち着き
     @Column(name = "param_str_05")
     private String paramStr05;
 
-    /*おしゃれ*/
+    // 非日常・不思議
     @Column(name = "param_str_06")
     private String paramStr06;
 
-    /*軽快*/
+    // かっこいい・美しい
     @Column(name = "param_str_07")
     private String paramStr07;
 
-    /*渋い*/
+    // かわいい・愛らしい
     @Column(name = "param_str_08")
     private String paramStr08;
 
-    /*かっこいい*/
+    // おしゃれ・ハイセンス
     @Column(name = "param_str_09")
     private String paramStr09;
 
-    /*かわいい*/
+    // せつなさ・胸の痛み
     @Column(name = "param_str_10")
     private String paramStr10;
 
-    /*重厚*/
+    // 渋い・哀愁
     @Column(name = "param_str_11")
     private String paramStr11;
 
-    /*不可思議*/
+    // 重厚さ
     @Column(name = "param_str_12")
     private String paramStr12;
 
-    /*乾き*/
+    // 不快・不安感
     @Column(name = "param_str_13")
     private String paramStr13;
 
-    /*予備*/
+    // 乾き・イライラ
     @Column(name = "param_str_14")
     private String paramStr14;
 
-    /*予備*/
+    // 日常・等身大
     @Column(name = "param_str_15")
     private String paramStr15;
 

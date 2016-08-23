@@ -40,7 +40,7 @@ public class SenseParamMrService extends AbstractService<SenseParamMr> {
      * @param song
      * @return
      */
-    public final int insertOrUpdate(final SenseParamMr paramMr){
+    public final int add(final SenseParamMr paramMr){
         if(paramMr == null){
             return 0;
         }
@@ -58,7 +58,7 @@ public class SenseParamMrService extends AbstractService<SenseParamMr> {
      * @param songKey
      * @return
      */
-    public final int deleteRec(final String paramKey,final String subKey){
+    public final int remove(final String paramKey,final String subKey){
         if(StringUtil.isBlank(paramKey) || StringUtil.isBlank(subKey)){
             return 0;
         }
@@ -68,6 +68,19 @@ public class SenseParamMrService extends AbstractService<SenseParamMr> {
         }else{
             return delete(chk);
         }
+    }
+
+    public final int remove(final SenseParamMr obj){
+        if(obj == null){
+            return 0;
+        }
+        SenseParamMr chk = fetchSingle(obj.getParamKey(),obj.getSubKey());
+        if(chk == null){
+            return 0;
+        }else{
+            return delete(chk);
+        }
+
     }
 
 }

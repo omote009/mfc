@@ -38,7 +38,7 @@ public class RelevantDataService extends AbstractService<RelevantData> {
      * @param newRec
      * @return
      */
-    public final int insertOrUpdate(final RelevantData newRec){
+    public final int add(final RelevantData newRec){
         if(newRec == null){
             return 0;
         }
@@ -56,7 +56,7 @@ public class RelevantDataService extends AbstractService<RelevantData> {
      * @param relevantKey
      * @return
      */
-    public final int deleteRec(final String relevantKey){
+    public final int remove(final String relevantKey){
         if (StringUtil.isBlank(relevantKey)) {
             return 0;
         }
@@ -67,6 +67,18 @@ public class RelevantDataService extends AbstractService<RelevantData> {
             return delete(chk);
         }
 
+    }
+
+    public final int remove(final RelevantData obj){
+        if(obj == null){
+            return 0;
+        }
+        RelevantData chk = fetchSingle(obj.getRelevantKey());
+        if(chk == null){
+            return 0;
+        }else{
+            return delete(chk);
+        }
     }
 
 }

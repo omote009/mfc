@@ -41,7 +41,7 @@ public class SongMrService extends AbstractService<SongMr> {
      * @param song
      * @return
      */
-    public final int insertOrUpdate(final SongMr song){
+    public final int add(final SongMr song){
         if(song == null){
             return 0;
         }
@@ -59,11 +59,24 @@ public class SongMrService extends AbstractService<SongMr> {
      * @param songKey
      * @return
      */
-    public final int deleteRec(final String songKey){
+    public final int remove(final String songKey){
         if(StringUtil.isBlank(songKey)){
             return 0;
         }
         SongMr chk = fetchSingle(songKey);
+        if(chk == null){
+            return 0;
+        }else{
+            return delete(chk);
+        }
+
+    }
+
+    public final int remove(final SongMr obj){
+        if(obj == null){
+            return 0;
+        }
+        SongMr chk = fetchSingle(obj.getSongKey());
         if(chk == null){
             return 0;
         }else{

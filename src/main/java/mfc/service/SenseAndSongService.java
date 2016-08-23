@@ -41,7 +41,7 @@ public class SenseAndSongService extends AbstractService<SenseAndSong> {
      * @param newRec
      * @return
      */
-    public final int insertOrUpdate(final SenseAndSong newRec){
+    public final int add(final SenseAndSong newRec){
         if(newRec == null){
             return 0;
         }
@@ -59,7 +59,7 @@ public class SenseAndSongService extends AbstractService<SenseAndSong> {
      * @param songKey
      * @return
      */
-    public final int deleteRec(final String songKey){
+    public final int remove(final String songKey){
         if (StringUtil.isBlank(songKey)) {
             return 0;
         }
@@ -71,6 +71,25 @@ public class SenseAndSongService extends AbstractService<SenseAndSong> {
         }
 
     }
+
+    /**
+     * 削除する
+     * @param obj
+     * @return
+     */
+    public final int remove(final SenseAndSong obj){
+        if(obj == null){
+            return 0;
+        }
+
+        SenseAndSong chk = fetchSingle(obj.getSongKey());
+        if(chk != null){
+            return delete(chk);
+        }
+
+        return 0;
+    }
+
 
     /**
      * waitからdelta分の差異の範囲に一致するレコードをリストで取得する。
@@ -99,7 +118,11 @@ public class SenseAndSongService extends AbstractService<SenseAndSong> {
         }
         return select().where(new SimpleWhere().le("wait", maxWait).ge("wait", minWait))
                 .getResultList();
-
     }
+
+
+
+
+
 
 }
